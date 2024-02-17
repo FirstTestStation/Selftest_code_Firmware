@@ -21,7 +21,7 @@
 
 
 static const uint I2C_OFFSET_ADDRESS = 0x20;  // ofsset to add to the physical address read
-static const uint PICO_PORT_ADDRESS = 0x23;  // Pico address where port is used
+//static const uint PICO_PORT_ADDRESS = 0x23;  // Pico address where port is used
 static const uint REG_STATUS = 100;  // Register used to report Status
 
 
@@ -32,10 +32,10 @@ static const uint I2C_SLAVE_ADDRESS_IO1 = 27;     // Bit 1 of I2C Address
 
 // For this example, we run both the master and slave from the same board.
 // You'll need to wire pin GP4 to GP6 (SDA), and pin GP5 to GP7 (SCL).
-static const uint I2C_SLAVE_SDA_PIN = 6; //PICO_DEFAULT_I2C_SDA_PIN; // 4
-static const uint I2C_SLAVE_SCL_PIN = 7; //PICO_DEFAULT_I2C_SCL_PIN; // 5
-static const uint I2C_MASTER_SDA_PIN = 20; // used in design
-static const uint I2C_MASTER_SCL_PIN = 21; // used in design
+//static const uint I2C_SLAVE_SDA_PIN = 6; //PICO_DEFAULT_I2C_SDA_PIN; // 4
+//static const uint I2C_SLAVE_SCL_PIN = 7; //PICO_DEFAULT_I2C_SCL_PIN; // 5
+//static const uint I2C_MASTER_SDA_PIN = 20; // used in design
+//static const uint I2C_MASTER_SCL_PIN = 21; // used in design
 
 // Define lines as GPIO at boot
 static const uint32_t GPIO_BOOT_MASK = 0b00011100010011111111111111111111;
@@ -44,13 +44,13 @@ static const uint32_t GPIO_SET_DIR_MASK = 0b0010000010000000000000000000;  // GP
 static const uint32_t GPIO_SELF_OUT_MASK = 0x00ul;  // All output to 0
 static const uint32_t GPIO_SELF_DIR_MASK = 0b00010000000000000000000000000000; 
 
-static const uint32_t PORT0_MASK = 0xfful;
-static const uint32_t PORT1_MASK = 0b111111110000000000;
-static const uint     PORT1_OFFSET = 10;  // shift to do for match mask
+//static const uint32_t PORT0_MASK = 0xfful;
+//static const uint32_t PORT1_MASK = 0b111111110000000000;
+//static const uint     PORT1_OFFSET = 10;  // shift to do for match mask
 
 
-static const uint32_t GPIO_BANK0_MASK = 0xfful;  // Bank 0 
-static const uint32_t GPIO_BANK1_MASK = 0b00000000000000111111110000000000;;  // Bank 1 
+//static const uint32_t GPIO_BANK0_MASK = 0xfful;  // Bank 0 
+//static const uint32_t GPIO_BANK1_MASK = 0b00000000000000111111110000000000;;  // Bank 1 
 
 
           
@@ -62,8 +62,6 @@ static const uint32_t GPIO_BANK1_MASK = 0b00000000000000111111110000000000;;  //
 Portable array-based cyclic FIFO queue.
 Copy from Internet
 */
-
-
 
 bool enque(MESSAGE *message) {
     if (queue.current_load < QUEUE_SIZE) {
@@ -134,10 +132,11 @@ static struct
 // printing to stdio may interfere with interrupt handling.
 static void i2c_slave_handler(i2c_inst_t *i2c, i2c_slave_event_t event) {
     MESSAGE rec; 
-    volatile uint8_t cmd; // = 127;  // keep command value
+    uint8_t cmd; // = 127;  // keep command value
     bool tvalue;
     uint8_t svalue;
-   volatile uint32_t maskvalue,lvalue;
+    uint32_t maskvalue;
+    char str_answer[80];
 
     switch (event) {
     case I2C_SLAVE_RECEIVE: // master has written some data
@@ -235,53 +234,26 @@ static void i2c_slave_handler(i2c_inst_t *i2c, i2c_slave_event_t event) {
                   enque(&rec);
                   break;
 
-                case 80: // Set Direction  Port 0 using 8 bit mask
-                  if (context.i2c_add == PICO_PORT_ADDRESS) {   // if command valid folowwing i2c_adress
-                    maskvalue = context.reg[context.reg_address];
-                    gpio_set_dir_masked(PORT0_MASK, maskvalue);   // Set Direction
-                    sprintf(&rec.data[0],"Cmd %02d, Port0, dir: 0x%02lx,  ", cmd, maskvalue);
-                  } else {
-                    sprintf(&rec.data[0],"Cmd %02d, Not Valid for I2C Pico: 0x%02x,  ", cmd, context.i2c_add);
-                    status.cmd=1;  // raise error flag
-                  }
-                  enque(&rec);
-                  break;
- 
-                case 81: // Set Output on 8 bit port 0
-                  if (context.i2c_add == PICO_PORT_ADDRESS) {  // if command valid folowwing i2c_adress
-                    maskvalue = context.reg[context.reg_address];
-                    gpio_put_masked(PORT0_MASK, maskvalue);   // Set Direction
-                    sprintf(&rec.data[0],"Cmd %02d, Port0, 8 bit Out: 0x%02x,  ", cmd, context.reg[context.reg_address]);
-                  } else {
-                    sprintf(&rec.data[0],"Cmd %02d, Not Valid for I2C Pico: 0x%02x,  ", cmd, context.i2c_add);
-                    status.cmd=1;  // raise error flag
-                  }
+                case 101: // Enable Uart TX/RX w/wo RTS/CTS
+                  enable_uart(context.reg[context.reg_address]);   // Enable uart
+                  sprintf(&rec.data[0],"Cmd %d, Enable UART, handshake RTS/CTS(1): %d ", cmd,context.reg[context.reg_address] );
                   enque(&rec);
                   break;
 
-                case 90: // Set Direction of port 1 using 8 bit mask
-                  if (context.i2c_add == PICO_PORT_ADDRESS) {  // if command valid folowwing i2c_adress
-                    maskvalue = context.reg[context.reg_address] << PORT1_OFFSET;
-                    gpio_set_dir_masked(PORT1_MASK, maskvalue);   // Set Direction
-                    sprintf(&rec.data[0],"Cmd %02d, Port1, dir: 0x%02lx,  ", cmd, maskvalue);
-                  } else {
-                    sprintf(&rec.data[0],"Cmd %02d, Not Valid for I2C Pico: 0x%02x,  ", cmd, context.i2c_add);
-                    status.cmd=1;  // raise error flag
-                  }
+                case 102: // Disable Uart and set as SIO
+                  disable_uart(context.reg[context.reg_address]);   // Disable uart
+                  sprintf(&rec.data[0],"Cmd %d, Disable UART, Set GPIO Input(0) Output(1): %d ", cmd,context.reg[context.reg_address]);
                   enque(&rec);
                   break;
-                
-                case 91: // Set Output on 8 bit port 1
-                  if (context.i2c_add == PICO_PORT_ADDRESS) {  // if command valid folowwing i2c_adress
-                    maskvalue = context.reg[context.reg_address] << PORT1_OFFSET;
-                    gpio_put_masked(PORT1_MASK, maskvalue);   // Set Output
-                    sprintf(&rec.data[0],"Cmd %02d, Port1, 8 bit Out: 0x%02x,  ", cmd, context.reg[context.reg_address]);
-                  } else {
-                    sprintf(&rec.data[0],"Cmd %02d, Not Valid for I2C Pico: 0x%02x,  ", cmd, context.i2c_add);
-                    
-                  }
+
+                case 103: // Set uart protocol
+                  set_uart_protocol(context.reg[context.reg_address],str_answer);   // Set uart protocol
+                  sprintf(&rec.data[0],"%s", str_answer);
                   enque(&rec);
                   break;
+
+
+ 
             }              
         }
         break;
@@ -351,38 +323,28 @@ static void i2c_slave_handler(i2c_inst_t *i2c, i2c_slave_event_t event) {
                   context.reg[context.reg_address] = svalue;
                   break;
 
-                case 85: // get Port 0 value
-                  if (context.i2c_add == PICO_PORT_ADDRESS) {  // if command valid folowwing i2c_adress
-                    lvalue = gpio_get_all();   // Read All GPIO     
-                    svalue = (uint8_t)lvalue;  // keep only 8 bit
-                    sprintf(&rec.data[0],"Cmd %02d,Read Port0 8 bit In: 0x%01x ", cmd,svalue);
-                    context.reg[context.reg_address] = svalue;
-                   } else {
-                    sprintf(&rec.data[0],"Cmd %02d, Not Valid for I2C Pico: 0x%02x,  ", cmd, context.i2c_add);
-                    status.cmd=1;  // raise error flag
-                  }
+                case 75: // get GPIO function
+                  svalue =  gpio_get_function(context.reg[context.reg_address]);   // Read function
+                  sprintf(&rec.data[0],"Cmd %02d, Read function Gpio: %02d , funct: 0x%02x ",cmd,  context.reg[context.reg_address],svalue);
                   enque(&rec);
+                  context.reg[context.reg_address] = svalue;
                   break;
 
-                case 95: // get Port 1 value
-                 if (context.i2c_add == PICO_PORT_ADDRESS) {  // if command valid folowwing i2c_adress
-                  lvalue = gpio_get_all();   // Read All GPIO     
-                  svalue = (uint8_t)(lvalue >> PORT1_OFFSET);
-                  sprintf(&rec.data[0],"Cmd %02d, Read Port1 8 bit In: 0x%01x ", cmd,svalue);
-                  context.reg[context.reg_address] = svalue;
-                  } else {
-                    sprintf(&rec.data[0],"Cmd %02d, Not Valid for I2C Pico: 0x%02x,  ", cmd, context.i2c_add);
-                    status.cmd=1;  // raise error flag
-                  }
-                  enque(&rec);
-                  
-                  break;
 
                 case 100: // get statsus register, nothing to do
                   context.reg[REG_STATUS] = status.all_flags;
                   sprintf(&rec.data[0],"Cmd %02d,Status register: 0x%01x ",cmd,  context.reg[REG_STATUS]);
                   enque(&rec);
                   break;
+
+                case 105: // get UART protocol
+                  svalue = get_uart_protocol(str_answer);   // Get uart protocol
+                  sprintf(&rec.data[0],"%s", str_answer);
+                  enque(&rec);
+                  context.reg[context.reg_address] = svalue;
+                  break;
+
+                
 
             }
 
@@ -439,7 +401,7 @@ static void  setup_i2c_slave(uint8_t i2c_add) {
 
     i2c_init(i2c1, I2C_BAUDRATE);
     
-    // configure I2C0 for slave mode
+    // configure I2C1 for slave mode
     i2c_slave_init(i2c1, i2c_add, &i2c_slave_handler);
    //i2c_slave_init(i2c0, I2C_SLAVE_ADDRESS, &i2c_slave_handler);
   
@@ -456,10 +418,10 @@ static void setup_master() {
     gpio_set_function(I2C_MASTER_SCL_PIN, GPIO_FUNC_I2C);
     gpio_pull_up(I2C_MASTER_SCL_PIN);
 
-    i2c_init(i2c1, I2C_BAUDRATE);
+    i2c_init(i2c0, I2C_BAUDRATE);
 }
 
-static void send_master(uint8_t cmd, uint16_t wdata) {
+void send_master(uint8_t cmd, uint16_t wdata) {
 
     // Writing to A register
     int count;
@@ -472,7 +434,7 @@ static void send_master(uint8_t cmd, uint16_t wdata) {
 
 
 
-        count = i2c_write_blocking(i2c1, context.i2c_add, buf, buflgth, false);
+        count = i2c_write_blocking(i2c0, context.i2c_add, buf, buflgth, false);
         if (count < 0) {
             puts("Couldn't write Register to slave");
             return;
@@ -481,8 +443,8 @@ static void send_master(uint8_t cmd, uint16_t wdata) {
 
 
         uint8_t ird[2];
-        i2c_write_blocking(i2c1, context.i2c_add, buf, 1, false);
-        i2c_read_blocking(i2c1, context.i2c_add, ird, buflgth-1, false);
+        i2c_write_blocking(i2c0, context.i2c_add, buf, 1, false);
+        i2c_read_blocking(i2c0, context.i2c_add, ird, buflgth-1, false);
 
         
         printf("MAS:Read Register 0x%02d = %d \r\n", cmd,ird[0]);
@@ -490,16 +452,10 @@ static void send_master(uint8_t cmd, uint16_t wdata) {
           
 }
 
-/*
-uint32_t pad_get_slew(uint gpio){
- return padsbank0_hw ->io[gpio] &0xff;
-}
- */  
 
  
 
 int main() {
-
 
     MESSAGE rec;
     uint16_t ctr;  // counter used for flashing led
@@ -531,9 +487,15 @@ int main() {
 
 
     setup_i2c_slave(context.i2c_add);
-    //setup_master();  // for development only, using loopback
-    setup_uart();
-    setup_spi_slave();
+    set_default_serial();  // set default value for uart
+
+    #ifdef DEBUG 
+      setup_master();  // for development only, using loopback on jtag port
+    #endif
+ 
+
+    //enable_uart();
+    //setup_spi_slave();
 
     gpio_init(PICO_DEFAULT_LED_PIN);
     gpio_set_dir(PICO_DEFAULT_LED_PIN, GPIO_OUT);  // Configure Pico led board
@@ -550,11 +512,6 @@ int main() {
     ctr++;
     mess++;
 
-    //sleep_ms(100);
-   // uart_putc(UART_ID, 'a');
-   // uart_puts(UART_ID, "\nHello, uart interrupts\n");
-    
-
 
     if (ctr > pulse) {
       gpio_put(PICO_DEFAULT_LED_PIN, 0); // Turn OFF board led
@@ -562,18 +519,21 @@ int main() {
       gpio_put(PICO_DEFAULT_LED_PIN, 1); // Turn ON board led
       ctr = 0;
     }
-   if (mess > 1500) {
+
+
+   if (mess > 1500) { // was 1500
       //printf("i2c add: 0x%02x\n", context.i2c_add); // for debug only
       fprintf(stdout,"Heartbeat I2C Slave add: 0x%02x  version: %d.%d\n", context.i2c_add, IO_SELFTEST_VERSION_MAJOR, IO_SELFTEST_VERSION_MINOR);
       mess = 0;
    }
     
+  #ifdef DEBUG_UART 
+   if (ctr >= pulse) {
+    fprintf(stdout,"\n\n Test of uart command\n");
+    test_serial_command(); 
+  }
+  #endif
 
-   // Need loopback on I2C 
-   // send_master (11,28); // test command 
-   //send_master (15,0x02); // test command
-   //send_master (85,0xC0); // test command
-   //send_master (100,0x00); // test command 
   
    
 

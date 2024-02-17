@@ -1,10 +1,11 @@
-# I2C slave library for the Raspberry Pi Pico
+# Selftest board firmware 
 
-Modified to run for my application 
+This software code is written to be loaded on selftest board  500-1010-020.
+The communication with the Pico controller use the I2C protocol configured as slave.
 
-The Raspberry Pi Pico C/C++ SDK has all you need to write an I2C master, but is curiously lacking when it comes to I2C in slave mode. This library fills that gap to easily turn the Pico into an I2C slave.
+Command has received from the master controller ans the Pico selftest firmware execute
+the instruction and return answer to the sender
 
-## Examples
  
 
 ### Setup
@@ -14,22 +15,21 @@ Follow the instructions in [Getting started with Raspberry Pi Pico](https://data
 
 ## Links
 
-
-## Original Authors
-
-Valentin Milea <valentin.milea@gmail.com>
-
-
-## Adaptation Authors
+## Authors
 Daniel Lockhead <daniellockhead@gmail.com>
+
+
+## Contributor Authors
+Thanks to 
+    Valentin Milea <valentin.milea@gmail.com>
+to provide I2C_Slave library 
 
 
 ## I2C Command supported
 
-Pico i2C Slave mode Protocol
+Pico i2C Selftest Protocol
 
 I2C Command is 2 bytes long:  Command_byte (1 byte) + Data (1 byte)
-
 
 | Command_Byte | Function   |  Description |
 | --- | --- | --- |
@@ -55,21 +55,22 @@ I2C Command is 2 bytes long:  Command_byte (1 byte) + Data (1 byte)
 | 60 | Set Pads State value    | Set Pads State register for use later  |
 | 61 | Set GPx to Pads State   | Write contains of command 60 on GPx |   
 | 65 | Get Pads state Gpx      | Read PAD register for Gpx |
+| 75 | Get GPIO function       | Read gpio function associated to gpio number|
+                               | XIP = 0, SPI=1, UART=2, I2C =3, PWM=4, SIO = 5 | 
+                               | PIO0 =6, PIO1=7, GPCK=8, USB=9, NULL = 0x1f | 
+|100 | Device Status           | Bit Status  (8 bits)             |  
+|    | Bit 0                   | Config Completed   0: true |
+|    | Bit 1                   | Command accepted   0: true |
+|    | Bit 2                   | Error  1= true |
+|    | Bit 3                   | watchdog trigged 1= true|
+| 101| Enable  UART            | setup uart mode  0: TX/RX, 1: TX/RX + CTS/RTS  |
+| 102| Disable UART            | setup uart to SIO mode:  0:input gpio, 1:output gpio  |
+| 103| Set UART protocol       | set uart protocol, see bits definition below |
+| 105| Get UART config         | return 1 byte config protocol:  |
+                               | Bit 7-6  Baudrate   0:9600, 1:38400,2: 57600, 3:115200 |
+                               | Bit 5-4  parity  0: None, 1: Even, 2: Odd  |
+                               | Bit 3:2  data bits  0:5, 1:6, 2:7,3:8  |
+                               | Bit 1    stop bits  0:1 stop , 1:2 stops |
+                               | Bit 0    handshake RTS/CTS    0: None, 1: Used |
 
 
-
-## 8 Bit I/O port I2C Command
-
-| Command_Byte | Function   |  Description |
-| --- | --- | --- |
-|80  | Set IO Mask Port 0    | 8 bit mask direction   0 = In , 1 = Out |
-|81  | Set IO Output Port 0  | Set Output Line   0= Low  1=High       |
-|85  | Read IO Input Port 0  | Get Input Line    0= Low  1=High      |
-|90  | Set IO Mask Port 1    | 8 bit mask direction   0 = In , 1 = Out |
-|91  | Set IO Output Port 1  | Set Output Line   0= Low  1=High     |
-|95  | Read IO Input Port 1  | Get Input Line    0= Low  1=High        |
-|100 | Device Status         | Bit Status  (8 bits)             |  
-|    | Bit 0                 | Config Completed   0: true |
-|    | Bit 1                 | Command accepted   0: true |
-|    | Bit 2                 | Error  1= true|
-|    | Bit 3                 | watchdog trigged 1= true|

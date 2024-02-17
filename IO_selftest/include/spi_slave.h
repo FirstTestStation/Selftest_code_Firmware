@@ -18,7 +18,7 @@ extern "C" {
 #define PICO_SLAVE_SPI_TX_PIN    4
 #define PICO_SLAVE_SPI_RX_PIN    3
 #define PICO_SLAVE_SPI_CSN_PIN   5
-#define SPI_RW_LEN  0x1
+#define SPI_RW_LEN  8
 
 void setup_spi_slave(void);
 
