@@ -1,0 +1,164 @@
+\hypertarget{selftest_8c}{}\doxysection{IO\+\_\+selftest/selftest.c File Reference}
+\label{selftest_8c}\index{IO\_selftest/selftest.c@{IO\_selftest/selftest.c}}
+
+
+Main loop to execute I2C instruction.  
+
+
+{\ttfamily \#include $<$i2c\+\_\+fifo.\+h$>$}\newline
+{\ttfamily \#include $<$i2c\+\_\+slave.\+h$>$}\newline
+{\ttfamily \#include $<$pico/stdlib.\+h$>$}\newline
+{\ttfamily \#include $<$stdio.\+h$>$}\newline
+{\ttfamily \#include $<$string.\+h$>$}\newline
+{\ttfamily \#include $<$stdbool.\+h$>$}\newline
+{\ttfamily \#include \char`\"{}hardware/watchdog.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}hardware/gpio.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}hardware/pwm.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}hardware/spi.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}userconfig.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}include/serial.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}include/spi\+\_\+slave.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}include/selftest.\+h\char`\"{}}\newline
+Include dependency graph for selftest.\+c\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{selftest_8c__incl}
+\end{center}
+\end{figure}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+bool \mbox{\hyperlink{selftest_8c_a859df203fa7c1fb839e68ce8f39ac6f6}{enque}} (\mbox{\hyperlink{structMESSAGE}{MESSAGE}} $\ast$message)
+\begin{DoxyCompactList}\small\item\em Enqueue a message into the queue. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{selftest_8c_ae733fe874122894bac75e1be37326ceb}{init\+\_\+queue}} ()
+\begin{DoxyCompactList}\small\item\em Initialize the queue. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{selftest_8c_a0993f9f10719ecefebb0b622f9e3ba96}{deque}} (\mbox{\hyperlink{structMESSAGE}{MESSAGE}} $\ast$message)
+\begin{DoxyCompactList}\small\item\em Dequeue a message from the queue. \end{DoxyCompactList}\item 
+uint8\+\_\+t \mbox{\hyperlink{selftest_8c_a06d62829ea92c02b468ca8c148c43b4d}{read\+\_\+i2c\+\_\+address}} ()
+\begin{DoxyCompactList}\small\item\em function who read the 2 externals pins to define the I2C address to use. The address = 0x20 + value of 2 externals pins \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{selftest_8c_a30321494f4854c4ecd9a6a05f82450f6}{set\+\_\+pwm\+\_\+frequency}} (bool setpwm, uint8\+\_\+t sfreq)
+\begin{DoxyCompactList}\small\item\em Used on in development to loopback I2C to simulate master talking to slave. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{selftest_8c_ae66f6b31b5ad750f1fe042a706a4e3d4}{main}} ()
+\begin{DoxyCompactList}\small\item\em main loop to execute i2c command from master. Pico led is flashing to indicate heartbeat \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Main loop to execute I2C instruction. 
+
+\begin{DoxyAuthor}{Author}
+Daniel Lockhead 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+2024
+\end{DoxyDate}
+Selftest Pico is defined as I2C slave and instructions are coming from the I2C master on Interconnect\+IO Board
+
+\begin{DoxyCopyright}{Copyright}
+Copyright (c) 2024, D.\+Lockhead. All rights reserved.
+\end{DoxyCopyright}
+This software is licensed under the BSD 3-\/Clause License. See the LICENSE file for more details. 
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{selftest_8c_a0993f9f10719ecefebb0b622f9e3ba96}\label{selftest_8c_a0993f9f10719ecefebb0b622f9e3ba96}} 
+\index{selftest.c@{selftest.c}!deque@{deque}}
+\index{deque@{deque}!selftest.c@{selftest.c}}
+\doxysubsubsection{\texorpdfstring{deque()}{deque()}}
+{\footnotesize\ttfamily bool deque (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structMESSAGE}{MESSAGE}} $\ast$}]{message }\end{DoxyParamCaption})}
+
+
+
+Dequeue a message from the queue. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em message} & Pointer to the message to be dequeued. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if the message was successfully dequeued, false if the queue is empty. 
+\end{DoxyReturn}
+Retrieve the message from the queue.
+
+Clear the dequeued message.
+
+Update the beginning index.\mbox{\Hypertarget{selftest_8c_a859df203fa7c1fb839e68ce8f39ac6f6}\label{selftest_8c_a859df203fa7c1fb839e68ce8f39ac6f6}} 
+\index{selftest.c@{selftest.c}!enque@{enque}}
+\index{enque@{enque}!selftest.c@{selftest.c}}
+\doxysubsubsection{\texorpdfstring{enque()}{enque()}}
+{\footnotesize\ttfamily bool enque (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structMESSAGE}{MESSAGE}} $\ast$}]{message }\end{DoxyParamCaption})}
+
+
+
+Enqueue a message into the queue. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em message} & Pointer to the message to be enqueued. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if the message was successfully enqueued, false if the queue is full. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{selftest_8c_ae733fe874122894bac75e1be37326ceb}\label{selftest_8c_ae733fe874122894bac75e1be37326ceb}} 
+\index{selftest.c@{selftest.c}!init\_queue@{init\_queue}}
+\index{init\_queue@{init\_queue}!selftest.c@{selftest.c}}
+\doxysubsubsection{\texorpdfstring{init\_queue()}{init\_queue()}}
+{\footnotesize\ttfamily void init\+\_\+queue (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Initialize the queue. 
+
+Initialize the beginning index.
+
+Initialize the end index.
+
+Initialize the current load.
+
+Clear the queue.\mbox{\Hypertarget{selftest_8c_ae66f6b31b5ad750f1fe042a706a4e3d4}\label{selftest_8c_ae66f6b31b5ad750f1fe042a706a4e3d4}} 
+\index{selftest.c@{selftest.c}!main@{main}}
+\index{main@{main}!selftest.c@{selftest.c}}
+\doxysubsubsection{\texorpdfstring{main()}{main()}}
+{\footnotesize\ttfamily int main (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+main loop to execute i2c command from master. Pico led is flashing to indicate heartbeat 
+
+\begin{DoxyReturn}{Returns}
+int do nothing 
+\end{DoxyReturn}
+Flashing led\mbox{\Hypertarget{selftest_8c_a06d62829ea92c02b468ca8c148c43b4d}\label{selftest_8c_a06d62829ea92c02b468ca8c148c43b4d}} 
+\index{selftest.c@{selftest.c}!read\_i2c\_address@{read\_i2c\_address}}
+\index{read\_i2c\_address@{read\_i2c\_address}!selftest.c@{selftest.c}}
+\doxysubsubsection{\texorpdfstring{read\_i2c\_address()}{read\_i2c\_address()}}
+{\footnotesize\ttfamily uint8\+\_\+t read\+\_\+i2c\+\_\+address (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+function who read the 2 externals pins to define the I2C address to use. The address = 0x20 + value of 2 externals pins 
+
+\begin{DoxyReturn}{Returns}
+uint8\+\_\+t Address to use for the Pico slave 
+\end{DoxyReturn}
+\mbox{\Hypertarget{selftest_8c_a30321494f4854c4ecd9a6a05f82450f6}\label{selftest_8c_a30321494f4854c4ecd9a6a05f82450f6}} 
+\index{selftest.c@{selftest.c}!set\_pwm\_frequency@{set\_pwm\_frequency}}
+\index{set\_pwm\_frequency@{set\_pwm\_frequency}!selftest.c@{selftest.c}}
+\doxysubsubsection{\texorpdfstring{set\_pwm\_frequency()}{set\_pwm\_frequency()}}
+{\footnotesize\ttfamily void set\+\_\+pwm\+\_\+frequency (\begin{DoxyParamCaption}\item[{bool}]{setpwm,  }\item[{uint8\+\_\+t}]{sfreq }\end{DoxyParamCaption})}
+
+
+
+Used on in development to loopback I2C to simulate master talking to slave. 
+
+Set the Pulse Modulation Width (PWM) frequency object
+
+
+\begin{DoxyParams}{Parameters}
+{\em setpwm} & if true, pin become PMW \\
+\hline
+{\em sfreq} & Frequency to generate in KHz \\
+\hline
+\end{DoxyParams}
+100Hz, Minimum frequency

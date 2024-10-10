@@ -1,0 +1,248 @@
+\hypertarget{serial_8h}{}\doxysection{IO\+\_\+selftest/include/serial.h File Reference}
+\label{serial_8h}\index{IO\_selftest/include/serial.h@{IO\_selftest/include/serial.h}}
+
+
+Header function to UART serial communication.  
+
+
+This graph shows which files directly or indirectly include this file\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=196pt]{serial_8h__dep__incl}
+\end{center}
+\end{figure}
+\doxysubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{serial_8h_a1de69c73f829a03f46f5e7690da7e79a}{UART\+\_\+\+ID}}~uart0
+\begin{DoxyCompactList}\small\item\em Default UART configuration. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{serial_8h_ad4455691936f92fdd6c37566fc58ba1f}\label{serial_8h_ad4455691936f92fdd6c37566fc58ba1f}} 
+\#define \mbox{\hyperlink{serial_8h_ad4455691936f92fdd6c37566fc58ba1f}{BAUD\+\_\+\+RATE}}~115200
+\begin{DoxyCompactList}\small\item\em Default UART baud rate. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{serial_8h_a418ddb806712895ba784cfdcaa92b715}\label{serial_8h_a418ddb806712895ba784cfdcaa92b715}} 
+\#define \mbox{\hyperlink{serial_8h_a418ddb806712895ba784cfdcaa92b715}{DATA\+\_\+\+BITS}}~8
+\begin{DoxyCompactList}\small\item\em Default number of data bits. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{serial_8h_abd1123d1a3a1f52c36d99b27e993e282}\label{serial_8h_abd1123d1a3a1f52c36d99b27e993e282}} 
+\#define \mbox{\hyperlink{serial_8h_abd1123d1a3a1f52c36d99b27e993e282}{STOP\+\_\+\+BITS}}~1
+\begin{DoxyCompactList}\small\item\em Default number of stop bits. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{serial_8h_af6996d12e71a534569c41a25de7d6d52}\label{serial_8h_af6996d12e71a534569c41a25de7d6d52}} 
+\#define \mbox{\hyperlink{serial_8h_af6996d12e71a534569c41a25de7d6d52}{PARITY}}~UART\+\_\+\+PARITY\+\_\+\+NONE
+\begin{DoxyCompactList}\small\item\em Default UART parity (none). \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{serial_8h_ae0500981046d626ecccf37c85df3b85b}{SP9\+\_\+6K}}~0
+\begin{DoxyCompactList}\small\item\em Baud rate options for bit fields. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{serial_8h_a4da91b416580c7bfc961583a6b3708b1}\label{serial_8h_a4da91b416580c7bfc961583a6b3708b1}} 
+\#define \mbox{\hyperlink{serial_8h_a4da91b416580c7bfc961583a6b3708b1}{SP38\+\_\+4K}}~1
+\begin{DoxyCompactList}\small\item\em 38400 baud rate. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{serial_8h_ad505adc1f2dace10dc012557a7ab15ff}\label{serial_8h_ad505adc1f2dace10dc012557a7ab15ff}} 
+\#define \mbox{\hyperlink{serial_8h_ad505adc1f2dace10dc012557a7ab15ff}{SP57\+\_\+6K}}~2
+\begin{DoxyCompactList}\small\item\em 57600 baud rate. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{serial_8h_ab686ae51c1174dc27cd9e10a5ed2aa1b}\label{serial_8h_ab686ae51c1174dc27cd9e10a5ed2aa1b}} 
+\#define \mbox{\hyperlink{serial_8h_ab686ae51c1174dc27cd9e10a5ed2aa1b}{SP115\+\_\+2K}}~3
+\begin{DoxyCompactList}\small\item\em 115200 baud rate. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{serial_8h_a0f7222dfd063975056be5c005dd994d0}{STOP1}}~1
+\begin{DoxyCompactList}\small\item\em Stop bit options for bit fields. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{serial_8h_aaef7f467c484fefb8158f5b23f005ccd}\label{serial_8h_aaef7f467c484fefb8158f5b23f005ccd}} 
+\#define \mbox{\hyperlink{serial_8h_aaef7f467c484fefb8158f5b23f005ccd}{STOP2}}~2
+\begin{DoxyCompactList}\small\item\em 2 stop bits. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{serial_8h_a7c343efc79af92f78a99dea24156f30c}{UPAR\+\_\+\+NONE}}~0
+\begin{DoxyCompactList}\small\item\em Parity options for bit fields. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{serial_8h_a6cc815e3892a7483f5eb412d58b7e24d}\label{serial_8h_a6cc815e3892a7483f5eb412d58b7e24d}} 
+\#define \mbox{\hyperlink{serial_8h_a6cc815e3892a7483f5eb412d58b7e24d}{UPAR\+\_\+\+EVEN}}~1
+\begin{DoxyCompactList}\small\item\em Even parity. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{serial_8h_ab0163fcd312dbc330c624aea5f94b3f8}\label{serial_8h_ab0163fcd312dbc330c624aea5f94b3f8}} 
+\#define \mbox{\hyperlink{serial_8h_ab0163fcd312dbc330c624aea5f94b3f8}{UPAR\+\_\+\+ODD}}~2
+\begin{DoxyCompactList}\small\item\em Odd parity. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{serial_8h_a7e388cc8aeb0ac89b8b8a112a103d07e}{D5\+BIT}}~0
+\begin{DoxyCompactList}\small\item\em Data bit size options for bit fields (offset of 5 added). \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{serial_8h_ac1a54d123e5a601ffb12ff7091898ae2}\label{serial_8h_ac1a54d123e5a601ffb12ff7091898ae2}} 
+\#define \mbox{\hyperlink{serial_8h_ac1a54d123e5a601ffb12ff7091898ae2}{D6\+BIT}}~1
+\begin{DoxyCompactList}\small\item\em 6-\/bit data size. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{serial_8h_a2c649cbf7354897a37ec3d22d95100c0}\label{serial_8h_a2c649cbf7354897a37ec3d22d95100c0}} 
+\#define \mbox{\hyperlink{serial_8h_a2c649cbf7354897a37ec3d22d95100c0}{D7\+BIT}}~2
+\begin{DoxyCompactList}\small\item\em 7-\/bit data size. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{serial_8h_a11ba78ec50b4c45d92a6cc79084df77b}\label{serial_8h_a11ba78ec50b4c45d92a6cc79084df77b}} 
+\#define \mbox{\hyperlink{serial_8h_a11ba78ec50b4c45d92a6cc79084df77b}{D8\+BIT}}~3
+\begin{DoxyCompactList}\small\item\em 8-\/bit data size. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{serial_8h_a15acfe2aaff3f57dc10e0974749b04bf}{HAND\+\_\+\+NO}}~0
+\begin{DoxyCompactList}\small\item\em Handshake options (RTS/\+CTS). \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{serial_8h_af8b3075700be28fa60bf3f0af092a713}\label{serial_8h_af8b3075700be28fa60bf3f0af092a713}} 
+\#define \mbox{\hyperlink{serial_8h_af8b3075700be28fa60bf3f0af092a713}{HAND\+\_\+\+YES}}~1
+\begin{DoxyCompactList}\small\item\em Handshake enabled (RTS/\+CTS). \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{serial_8h_a6c82a6844388a551e8f06d249598989e}{UART\+\_\+\+TX\+\_\+\+PIN}}~12
+\begin{DoxyCompactList}\small\item\em UART pin configuration. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{serial_8h_aa37eca6fe61f6938d925975dff27c8fd}\label{serial_8h_aa37eca6fe61f6938d925975dff27c8fd}} 
+\#define \mbox{\hyperlink{serial_8h_aa37eca6fe61f6938d925975dff27c8fd}{UART\+\_\+\+RX\+\_\+\+PIN}}~13
+\begin{DoxyCompactList}\small\item\em UART receive pin. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{serial_8h_a8f26ce0e19db55c2ad2c8927162e9b97}\label{serial_8h_a8f26ce0e19db55c2ad2c8927162e9b97}} 
+\#define \mbox{\hyperlink{serial_8h_a8f26ce0e19db55c2ad2c8927162e9b97}{UART\+\_\+\+CTS\+\_\+\+PIN}}~14
+\begin{DoxyCompactList}\small\item\em UART CTS pin. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{serial_8h_af8028d96a7d355ec66a69df75ec29f1b}\label{serial_8h_af8028d96a7d355ec66a69df75ec29f1b}} 
+\#define \mbox{\hyperlink{serial_8h_af8028d96a7d355ec66a69df75ec29f1b}{UART\+\_\+\+RTS\+\_\+\+PIN}}~15
+\begin{DoxyCompactList}\small\item\em UART RTS pin. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{serial_8h_a333ad4eac2ff98d51fa64f910cbc0309}{enable\+\_\+uart}} (uint8\+\_\+t rts\+\_\+cts)
+\begin{DoxyCompactList}\small\item\em function who enable the uart and setup RX interrupt \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{serial_8h_adfebc8aca6626b78b0e06258c5063ff0}{disable\+\_\+uart}} (uint8\+\_\+t mode)
+\begin{DoxyCompactList}\small\item\em function who disable the uart and setup uart pin to GPIO \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{serial_8h_a020ad167d747134201ad614415d034b6}\label{serial_8h_a020ad167d747134201ad614415d034b6}} 
+void \mbox{\hyperlink{serial_8h_a020ad167d747134201ad614415d034b6}{set\+\_\+default\+\_\+serial}} (void)
+\begin{DoxyCompactList}\small\item\em Fill structure with the default uart configuration. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{serial_8h_aaac071176b487fb58f4e37e8e4fc0bc4}{set\+\_\+uart\+\_\+protocol}} (uint8\+\_\+t cfg\+\_\+uart, char $\ast$resultstr)
+\begin{DoxyCompactList}\small\item\em Set the uart protocol structure with value received externally. \end{DoxyCompactList}\item 
+uint8\+\_\+t \mbox{\hyperlink{serial_8h_accb63e465a1f86b29e2aac125acbd549}{get\+\_\+uart\+\_\+protocol}} (char $\ast$resultstr)
+\begin{DoxyCompactList}\small\item\em Get the uart protocol structure with value received externally. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Header function to UART serial communication. 
+
+\begin{DoxyAuthor}{Author}
+Daniel Lockhead 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+2024
+\end{DoxyDate}
+\begin{DoxyCopyright}{Copyright}
+Copyright (c) 2024, D.\+Lockhead. All rights reserved.
+\end{DoxyCopyright}
+This software is licensed under the BSD 3-\/Clause License. See the LICENSE file for more details. 
+
+\doxysubsection{Macro Definition Documentation}
+\mbox{\Hypertarget{serial_8h_a7e388cc8aeb0ac89b8b8a112a103d07e}\label{serial_8h_a7e388cc8aeb0ac89b8b8a112a103d07e}} 
+\index{serial.h@{serial.h}!D5BIT@{D5BIT}}
+\index{D5BIT@{D5BIT}!serial.h@{serial.h}}
+\doxysubsubsection{\texorpdfstring{D5BIT}{D5BIT}}
+{\footnotesize\ttfamily \#define D5\+BIT~0}
+
+
+
+Data bit size options for bit fields (offset of 5 added). 
+
+5-\/bit data size. \mbox{\Hypertarget{serial_8h_a15acfe2aaff3f57dc10e0974749b04bf}\label{serial_8h_a15acfe2aaff3f57dc10e0974749b04bf}} 
+\index{serial.h@{serial.h}!HAND\_NO@{HAND\_NO}}
+\index{HAND\_NO@{HAND\_NO}!serial.h@{serial.h}}
+\doxysubsubsection{\texorpdfstring{HAND\_NO}{HAND\_NO}}
+{\footnotesize\ttfamily \#define HAND\+\_\+\+NO~0}
+
+
+
+Handshake options (RTS/\+CTS). 
+
+No handshake. \mbox{\Hypertarget{serial_8h_ae0500981046d626ecccf37c85df3b85b}\label{serial_8h_ae0500981046d626ecccf37c85df3b85b}} 
+\index{serial.h@{serial.h}!SP9\_6K@{SP9\_6K}}
+\index{SP9\_6K@{SP9\_6K}!serial.h@{serial.h}}
+\doxysubsubsection{\texorpdfstring{SP9\_6K}{SP9\_6K}}
+{\footnotesize\ttfamily \#define SP9\+\_\+6K~0}
+
+
+
+Baud rate options for bit fields. 
+
+9600 baud rate. \mbox{\Hypertarget{serial_8h_a0f7222dfd063975056be5c005dd994d0}\label{serial_8h_a0f7222dfd063975056be5c005dd994d0}} 
+\index{serial.h@{serial.h}!STOP1@{STOP1}}
+\index{STOP1@{STOP1}!serial.h@{serial.h}}
+\doxysubsubsection{\texorpdfstring{STOP1}{STOP1}}
+{\footnotesize\ttfamily \#define STOP1~1}
+
+
+
+Stop bit options for bit fields. 
+
+1 stop bit. \mbox{\Hypertarget{serial_8h_a1de69c73f829a03f46f5e7690da7e79a}\label{serial_8h_a1de69c73f829a03f46f5e7690da7e79a}} 
+\index{serial.h@{serial.h}!UART\_ID@{UART\_ID}}
+\index{UART\_ID@{UART\_ID}!serial.h@{serial.h}}
+\doxysubsubsection{\texorpdfstring{UART\_ID}{UART\_ID}}
+{\footnotesize\ttfamily \#define UART\+\_\+\+ID~uart0}
+
+
+
+Default UART configuration. 
+
+UART instance to be used. \mbox{\Hypertarget{serial_8h_a6c82a6844388a551e8f06d249598989e}\label{serial_8h_a6c82a6844388a551e8f06d249598989e}} 
+\index{serial.h@{serial.h}!UART\_TX\_PIN@{UART\_TX\_PIN}}
+\index{UART\_TX\_PIN@{UART\_TX\_PIN}!serial.h@{serial.h}}
+\doxysubsubsection{\texorpdfstring{UART\_TX\_PIN}{UART\_TX\_PIN}}
+{\footnotesize\ttfamily \#define UART\+\_\+\+TX\+\_\+\+PIN~12}
+
+
+
+UART pin configuration. 
+
+UART transmit pin. \mbox{\Hypertarget{serial_8h_a7c343efc79af92f78a99dea24156f30c}\label{serial_8h_a7c343efc79af92f78a99dea24156f30c}} 
+\index{serial.h@{serial.h}!UPAR\_NONE@{UPAR\_NONE}}
+\index{UPAR\_NONE@{UPAR\_NONE}!serial.h@{serial.h}}
+\doxysubsubsection{\texorpdfstring{UPAR\_NONE}{UPAR\_NONE}}
+{\footnotesize\ttfamily \#define UPAR\+\_\+\+NONE~0}
+
+
+
+Parity options for bit fields. 
+
+No parity. 
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{serial_8h_adfebc8aca6626b78b0e06258c5063ff0}\label{serial_8h_adfebc8aca6626b78b0e06258c5063ff0}} 
+\index{serial.h@{serial.h}!disable\_uart@{disable\_uart}}
+\index{disable\_uart@{disable\_uart}!serial.h@{serial.h}}
+\doxysubsubsection{\texorpdfstring{disable\_uart()}{disable\_uart()}}
+{\footnotesize\ttfamily void disable\+\_\+uart (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{mode }\end{DoxyParamCaption})}
+
+
+
+function who disable the uart and setup uart pin to GPIO 
+
+
+\begin{DoxyParams}{Parameters}
+{\em mode} & Set Gpio pin as input(0) or output(1) \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{serial_8h_a333ad4eac2ff98d51fa64f910cbc0309}\label{serial_8h_a333ad4eac2ff98d51fa64f910cbc0309}} 
+\index{serial.h@{serial.h}!enable\_uart@{enable\_uart}}
+\index{enable\_uart@{enable\_uart}!serial.h@{serial.h}}
+\doxysubsubsection{\texorpdfstring{enable\_uart()}{enable\_uart()}}
+{\footnotesize\ttfamily void enable\+\_\+uart (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{rts\+\_\+cts }\end{DoxyParamCaption})}
+
+
+
+function who enable the uart and setup RX interrupt 
+
+
+\begin{DoxyParams}{Parameters}
+{\em rts\+\_\+cts} & Enable RTS-\/\+CTS handshake if rts\+\_\+cts = 1 \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{serial_8h_accb63e465a1f86b29e2aac125acbd549}\label{serial_8h_accb63e465a1f86b29e2aac125acbd549}} 
+\index{serial.h@{serial.h}!get\_uart\_protocol@{get\_uart\_protocol}}
+\index{get\_uart\_protocol@{get\_uart\_protocol}!serial.h@{serial.h}}
+\doxysubsubsection{\texorpdfstring{get\_uart\_protocol()}{get\_uart\_protocol()}}
+{\footnotesize\ttfamily uint8\+\_\+t get\+\_\+uart\+\_\+protocol (\begin{DoxyParamCaption}\item[{char $\ast$}]{resultstr }\end{DoxyParamCaption})}
+
+
+
+Get the uart protocol structure with value received externally. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em resultstr} & return a string with the protocol used on uart \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{serial_8h_aaac071176b487fb58f4e37e8e4fc0bc4}\label{serial_8h_aaac071176b487fb58f4e37e8e4fc0bc4}} 
+\index{serial.h@{serial.h}!set\_uart\_protocol@{set\_uart\_protocol}}
+\index{set\_uart\_protocol@{set\_uart\_protocol}!serial.h@{serial.h}}
+\doxysubsubsection{\texorpdfstring{set\_uart\_protocol()}{set\_uart\_protocol()}}
+{\footnotesize\ttfamily void set\+\_\+uart\+\_\+protocol (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{cfg\+\_\+uart,  }\item[{char $\ast$}]{resultstr }\end{DoxyParamCaption})}
+
+
+
+Set the uart protocol structure with value received externally. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em cfg\+\_\+uart} & One byte who define thr uart prtocol to use \\
+\hline
+{\em resultstr} & return a string with the protocol used on uart \\
+\hline
+\end{DoxyParams}

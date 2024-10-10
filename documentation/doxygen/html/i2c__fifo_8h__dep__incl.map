@@ -1,0 +1,4 @@
+<map id="i2c_slave/include/i2c_fifo.h" name="i2c_slave/include/i2c_fifo.h">
+<area shape="rect" id="node1" title="I2C non&#45;blocking r/w." alt="" coords="5,5,163,47"/>
+<area shape="rect" id="node2" href="$selftest_8c.html" title="Main loop to execute I2C instruction." alt="" coords="7,95,161,121"/>
+</map>

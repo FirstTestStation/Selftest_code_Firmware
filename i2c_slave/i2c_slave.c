@@ -7,11 +7,14 @@
 #include <i2c_slave.h>
 #include <hardware/irq.h>
 
-typedef struct i2c_slave_t
-{
-    i2c_inst_t *i2c;
-    i2c_slave_handler_t handler;
-    bool transfer_in_progress;
+
+/**
+ * @brief I2C slave device structure.
+ */
+typedef struct i2c_slave_t {
+    i2c_inst_t *i2c;               /**< I2C instance. */
+    i2c_slave_handler_t handler;   /**< I2C slave event handler. */
+    bool transfer_in_progress;     /**< Transfer status flag. */
 } i2c_slave_t;
 
 static i2c_slave_t i2c_slaves[2];

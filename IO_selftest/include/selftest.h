@@ -1,64 +1,79 @@
-/*
- * 
+/**
+ * @file    selftest.h
+ * @author  Daniel Lockhead
+ * @date    2024
  *
- * SPDX-License-Identifier: MIT
+ * @brief   Header function to main selftest loop
+ *
+ *
+ * @copyright Copyright (c) 2024, D.Lockhead. All rights reserved.
+ *
+ * This software is licensed under the BSD 3-Clause License.
+ * See the LICENSE file for more details.
  */
 
 #ifndef _SELFTEST_H_
 #define _SELFTEST_H_
 
-
-
 #ifdef __cplusplus
-extern "C" {
+extern "C"
+{
 #endif
 
+  //#define DEBUG_CODE  // DEbug mode for test code using i2c loopback
 
-#define DEBUG  // DEbug mode
-#define DEBUG_UART  // DEbug mode for test uart
+  // For help debug code on selftest board,  a loopback has been made using gpio reserved
+  // for JTAG testing. If debug is defined, the slave i2C pin are modified to be connected
+  // on the loopback
 
-
-// For help debug code on selftest board,  a loopback has been made using gpio reserved 
-// for jtag testing. If debug is defined, the slave i2C pin are modified to be connected
-// on the loopback
-
-
-#ifdef DEBUG_UART
-    #define  I2C_SLAVE_SDA_PIN   18 
-    #define  I2C_SLAVE_SCL_PIN   19 
+#ifdef DEBUG_CODE
+/**
+ * @brief Pins used for I2C loopback mode during debugging.
+ */
+#define I2C_SLAVE_SDA_PIN 18  /**< SDA pin for I2C slave in loopback mode. */
+#define I2C_SLAVE_SCL_PIN 19  /**< SCL pin for I2C slave in loopback mode. */
+#define I2C_MASTER_SDA_PIN 16 /**< SDA pin for I2C master in loopback mode. */
+#define I2C_MASTER_SCL_PIN 17 /**< SCL pin for I2C master in loopback mode. */
 #endif
 
-#ifndef DEBUG_UART
-    #define  I2C_SLAVE_SDA_PIN   6 
-    #define  I2C_SLAVE_SCL_PIN   7 
+#ifndef DEBUG_CODE
+/**
+ * @brief Pins used for I2C in normal operation.
+ */
+#define I2C_SLAVE_SDA_PIN 6 /**< SDA pin for I2C slave in normal operation. */
+#define I2C_SLAVE_SCL_PIN 7 /**< SCL pin for I2C slave in normal operation. */
 #endif
 
-#define  I2C_MASTER_SDA_PIN 16 
-#define  I2C_MASTER_SCL_PIN 17 
+#define MESSAGE_SIZE 120  ///< Size of each message.
+#define QUEUE_SIZE 255     ///< Queue size, set high for development.
+#define WATCHDOG_TIMEOUT_MS 10000  ///< Watchdog timeout (10 seconds).
+#define GPIOF 10  ///< GPIO pin used to generate frequency output.
 
-
-#define MESSAGE_SIZE 80
-#define QUEUE_SIZE 64 // set high for development
-
-
-typedef struct {
-char data[MESSAGE_SIZE];
+/**
+ * @brief Structure representing a message.
+ */
+typedef struct
+{
+    char data[MESSAGE_SIZE];  ///< Data contained in the message.
 } MESSAGE;
 
-struct {   // global structure
-    MESSAGE messages[QUEUE_SIZE];
-    int begin;
-    int end;
-    int current_load;
+/**
+ * @brief Global structure for message queue management.
+ */
+struct
+{
+    MESSAGE messages[QUEUE_SIZE];  ///< Array of messages in the queue.
+    int begin;                     ///< Index of the queue's first message.
+    int end;                       ///< Index of the queue's last message.
+    int current_load;              ///< Number of messages currently in the queue.
 } queue;
 
 
-bool enque(MESSAGE *message);
-void send_master(uint8_t cmd, uint16_t wdata);
+  bool enque(MESSAGE* message);
+  void set_pwm_frequency(bool setpwm, uint8_t sfreq);
 
 #ifdef __cplusplus
 }
 #endif
 
-#endif //
-
+#endif  //

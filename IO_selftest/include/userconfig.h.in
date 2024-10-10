@@ -6,7 +6,7 @@
 
 
 
-// Version of SLAVE software
+// Version of Selftest software
 #define IO_SELFTEST_VERSION_MAJOR @IO_SELFTEST_VERSION_MAJOR@
 #define IO_SELFTEST_VERSION_MINOR @IO_SELFTEST_VERSION_MINOR@
 

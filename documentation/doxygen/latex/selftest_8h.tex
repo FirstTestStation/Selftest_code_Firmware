@@ -1,0 +1,137 @@
+\hypertarget{selftest_8h}{}\doxysection{IO\+\_\+selftest/include/selftest.h File Reference}
+\label{selftest_8h}\index{IO\_selftest/include/selftest.h@{IO\_selftest/include/selftest.h}}
+
+
+Header function to main selftest loop.  
+
+
+This graph shows which files directly or indirectly include this file\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=340pt]{selftest_8h__dep__incl}
+\end{center}
+\end{figure}
+\doxysubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{structMESSAGE}{MESSAGE}}
+\begin{DoxyCompactList}\small\item\em Structure representing a message. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{selftest_8h_a9ef9e2dc317ee4678ee9377413c7e144}{I2\+C\+\_\+\+SLAVE\+\_\+\+SDA\+\_\+\+PIN}}~6
+\begin{DoxyCompactList}\small\item\em Pins used for I2C in normal operation. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{selftest_8h_ae0f44eccd9aed39f759f5aa3559b7cfa}{I2\+C\+\_\+\+SLAVE\+\_\+\+SCL\+\_\+\+PIN}}~7
+\item 
+\mbox{\Hypertarget{selftest_8h_aeca90e1c1c62b70670514ffc18c9dfd4}\label{selftest_8h_aeca90e1c1c62b70670514ffc18c9dfd4}} 
+\#define \mbox{\hyperlink{selftest_8h_aeca90e1c1c62b70670514ffc18c9dfd4}{MESSAGE\+\_\+\+SIZE}}~120
+\begin{DoxyCompactList}\small\item\em Size of each message. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{selftest_8h_a142810068f1b99cd93d3fc9f0e160e02}\label{selftest_8h_a142810068f1b99cd93d3fc9f0e160e02}} 
+\#define \mbox{\hyperlink{selftest_8h_a142810068f1b99cd93d3fc9f0e160e02}{QUEUE\+\_\+\+SIZE}}~64
+\begin{DoxyCompactList}\small\item\em Queue size, set high for development. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{selftest_8h_a7806944d3d2580d7208d9f051a19f310}\label{selftest_8h_a7806944d3d2580d7208d9f051a19f310}} 
+\#define \mbox{\hyperlink{selftest_8h_a7806944d3d2580d7208d9f051a19f310}{WATCHDOG\+\_\+\+TIMEOUT\+\_\+\+MS}}~2000
+\begin{DoxyCompactList}\small\item\em Watchdog timeout (2 seconds). \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{selftest_8h_a43c3022dede7c9db7a58d3c3409dbc8d}\label{selftest_8h_a43c3022dede7c9db7a58d3c3409dbc8d}} 
+\#define \mbox{\hyperlink{selftest_8h_a43c3022dede7c9db7a58d3c3409dbc8d}{GPIOF}}~10
+\begin{DoxyCompactList}\small\item\em GPIO pin used to generate frequency output. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+bool \mbox{\hyperlink{selftest_8h_a859df203fa7c1fb839e68ce8f39ac6f6}{enque}} (\mbox{\hyperlink{structMESSAGE}{MESSAGE}} $\ast$message)
+\begin{DoxyCompactList}\small\item\em Enqueue a message into the queue. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{selftest_8h_a30321494f4854c4ecd9a6a05f82450f6}{set\+\_\+pwm\+\_\+frequency}} (bool setpwm, uint8\+\_\+t sfreq)
+\begin{DoxyCompactList}\small\item\em Used on in development to loopback I2C to simulate master talking to slave. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{selftest_8h_ab0465a95499aab048b02601cd65e1ad6}\label{selftest_8h_ab0465a95499aab048b02601cd65e1ad6}} 
+\begin{tabbing}
+xx\=xx\=xx\=xx\=xx\=xx\=xx\=xx\=xx\=\kill
+struct \{\\
+\>\mbox{\hyperlink{structMESSAGE}{MESSAGE}} \mbox{\hyperlink{selftest_8h_a212ceeefc46dd1a9604e02b868db2634}{messages}} \mbox{[}\mbox{\hyperlink{selftest_8h_a142810068f1b99cd93d3fc9f0e160e02}{QUEUE\_SIZE}}\mbox{]}\\
+\>\>{\em Array of messages in the queue. }\\
+\>int \mbox{\hyperlink{selftest_8h_a9320720f4d683cc7c76f800be700ac35}{begin}}\\
+\>\>{\em Index of the queue\textquotesingle{}s first message. }\\
+\>int \mbox{\hyperlink{selftest_8h_abce9f5dc9c83f2639b72024fdee5d388}{end}}\\
+\>\>{\em Index of the queue\textquotesingle{}s last message. }\\
+\>int \mbox{\hyperlink{selftest_8h_a4ba74c1822743f8cac000c1eb4542510}{current\_load}}\\
+\>\>{\em Number of messages currently in the queue. }\\
+\} \mbox{\hyperlink{selftest_8h_ab0465a95499aab048b02601cd65e1ad6}{queue}}\\
+
+\end{tabbing}\begin{DoxyCompactList}\small\item\em Global structure for message queue management. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Header function to main selftest loop. 
+
+\begin{DoxyAuthor}{Author}
+Daniel Lockhead 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+2024
+\end{DoxyDate}
+\begin{DoxyCopyright}{Copyright}
+Copyright (c) 2024, D.\+Lockhead. All rights reserved.
+\end{DoxyCopyright}
+This software is licensed under the BSD 3-\/Clause License. See the LICENSE file for more details. 
+
+\doxysubsection{Macro Definition Documentation}
+\mbox{\Hypertarget{selftest_8h_ae0f44eccd9aed39f759f5aa3559b7cfa}\label{selftest_8h_ae0f44eccd9aed39f759f5aa3559b7cfa}} 
+\index{selftest.h@{selftest.h}!I2C\_SLAVE\_SCL\_PIN@{I2C\_SLAVE\_SCL\_PIN}}
+\index{I2C\_SLAVE\_SCL\_PIN@{I2C\_SLAVE\_SCL\_PIN}!selftest.h@{selftest.h}}
+\doxysubsubsection{\texorpdfstring{I2C\_SLAVE\_SCL\_PIN}{I2C\_SLAVE\_SCL\_PIN}}
+{\footnotesize\ttfamily \#define I2\+C\+\_\+\+SLAVE\+\_\+\+SCL\+\_\+\+PIN~7}
+
+SCL pin for I2C slave in normal operation. \mbox{\Hypertarget{selftest_8h_a9ef9e2dc317ee4678ee9377413c7e144}\label{selftest_8h_a9ef9e2dc317ee4678ee9377413c7e144}} 
+\index{selftest.h@{selftest.h}!I2C\_SLAVE\_SDA\_PIN@{I2C\_SLAVE\_SDA\_PIN}}
+\index{I2C\_SLAVE\_SDA\_PIN@{I2C\_SLAVE\_SDA\_PIN}!selftest.h@{selftest.h}}
+\doxysubsubsection{\texorpdfstring{I2C\_SLAVE\_SDA\_PIN}{I2C\_SLAVE\_SDA\_PIN}}
+{\footnotesize\ttfamily \#define I2\+C\+\_\+\+SLAVE\+\_\+\+SDA\+\_\+\+PIN~6}
+
+
+
+Pins used for I2C in normal operation. 
+
+SDA pin for I2C slave in normal operation. 
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{selftest_8h_a859df203fa7c1fb839e68ce8f39ac6f6}\label{selftest_8h_a859df203fa7c1fb839e68ce8f39ac6f6}} 
+\index{selftest.h@{selftest.h}!enque@{enque}}
+\index{enque@{enque}!selftest.h@{selftest.h}}
+\doxysubsubsection{\texorpdfstring{enque()}{enque()}}
+{\footnotesize\ttfamily bool enque (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structMESSAGE}{MESSAGE}} $\ast$}]{message }\end{DoxyParamCaption})}
+
+
+
+Enqueue a message into the queue. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em message} & Pointer to the message to be enqueued. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if the message was successfully enqueued, false if the queue is full. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{selftest_8h_a30321494f4854c4ecd9a6a05f82450f6}\label{selftest_8h_a30321494f4854c4ecd9a6a05f82450f6}} 
+\index{selftest.h@{selftest.h}!set\_pwm\_frequency@{set\_pwm\_frequency}}
+\index{set\_pwm\_frequency@{set\_pwm\_frequency}!selftest.h@{selftest.h}}
+\doxysubsubsection{\texorpdfstring{set\_pwm\_frequency()}{set\_pwm\_frequency()}}
+{\footnotesize\ttfamily void set\+\_\+pwm\+\_\+frequency (\begin{DoxyParamCaption}\item[{bool}]{setpwm,  }\item[{uint8\+\_\+t}]{sfreq }\end{DoxyParamCaption})}
+
+
+
+Used on in development to loopback I2C to simulate master talking to slave. 
+
+Set the Pulse Modulation Width (PWM) frequency object
+
+
+\begin{DoxyParams}{Parameters}
+{\em setpwm} & if true, pin become PMW \\
+\hline
+{\em sfreq} & Frequency to generate in KHz \\
+\hline
+\end{DoxyParams}
+100Hz, Minimum frequency

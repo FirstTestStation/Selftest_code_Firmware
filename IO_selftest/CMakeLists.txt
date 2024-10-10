@@ -37,6 +37,7 @@
     i2c_slave
     pico_stdlib
     hardware_spi
+    hardware_pwm
     )
    #target_link_libraries(selftest pico_stdlib hardware_spi)
    

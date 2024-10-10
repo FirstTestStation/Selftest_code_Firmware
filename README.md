@@ -1,4 +1,4 @@
-# Selftest board firmware 
+# Selftest code firmware 
 
 This software code is written to be loaded on selftest board  500-1010-020.
 The communication with the Pico controller use the I2C protocol configured as slave.
@@ -6,23 +6,61 @@ The communication with the Pico controller use the I2C protocol configured as sl
 Command has received from the master controller ans the Pico selftest firmware execute
 the instruction and return answer to the sender
 
- 
+The hardware support for the firmware is on github location: https://github.com/dlock8/Selftest_Board
+
+
+## License
+This project is licensed under the BSD 3-Clause License. See the [LICENSE](./LICENSE) file for more details.
+
+
+## Project setup
+
+This project has been developped on raspberry pi 4 following installation instruction from this pdf [getting-started-with-pico_C.pdf](./documentation/getting-started-with-pico_C.pdf),  a copy of the pdf is located on the main folder.
+
+Visual studio has been used for development and raspberry pi 4 for Pico debug.  
+
+Based on https://github.com/vmilea/pico_i2c_slave. The pico_i2c_slave software has been added to enable the Raspberry Pi Pico to function as an I2C device.
+
+
+The compilation is performed using Visual Studio and the important extension installed are:
+
+* Cmake v0.0.17
+* Cmake Tools v1.20.10
+* Cortex-Debug v1.12.1
+* debug-tracker-vscode v0.0.15
+* Doxygen Documentation Generator v1.4.0
+* Doxygen runner v1.8.0
+* Github Pull Request v0.96.0
+* Hex Editor v1.10.0
+* MemoryView v0.0.25
+* peripheral Viewer v1.4.6
+* RTOS view v0.0.7
+* C/C++ v1.21.6
+
+
+I not sure if all extensions are required but is the one installed presently.
+
+
+## Building
+
+Build of this cmake project is performed with Visual Studio
+
+## Development
+
+* [`selftest.c`](IO_selftest/selftest.c) is the main source file for the firmware.
+* [`CMakeLists.txt`](CMakeLists.txt) contains build instructions for CMake.
+* [`pico_sdk_import.cmake`](pico_sdk_import.cmake) was (as usual) copied verbatim from the Pico SDK and allows CMake to interact with the SDK’s functionality.
+
+## Installation
+
+* The Files ['selftest.uf2'](build/IO_selftest/selftest.uf2) contains the firmware to be loaded on the Pico RP2040 board using USB cable and boot button.
+* When software loaded, the Pico board should be installed on the location marked ST_CTRL on Selftest Board.
+* On board Pico Led will flash slowly (heartbeat) on power ON.
+
 
 ### Setup
 
 Follow the instructions in [Getting started with Raspberry Pi Pico](https://datasheets.raspberrypi.org/pico/getting-started-with-pico.pdf) to setup your build environment.
-
-
-## Links
-
-## Authors
-Daniel Lockhead <daniellockhead@gmail.com>
-
-
-## Contributor Authors
-Thanks to 
-    Valentin Milea <valentin.milea@gmail.com>
-to provide I2C_Slave library 
 
 
 ## I2C Command supported
@@ -42,11 +80,11 @@ I2C Command is 2 bytes long:  Command_byte (1 byte) + Data (1 byte)
 | 20 | Set Dir GPx Out    | Set direction Out for Gpx  |                                   
 | 21 | Set Dir GPx In     | Set direction In for Gpx  |                                   
 | 25 | Get Dir GPx        | Read GPX direction, 0 = In , 1 = Out |
-| 30 | Set GPx strenght = 2mA  | Set GPx output max current |
-| 31 | Set GPx strenght = 4mA  | Set GPx output max current |
-| 32 | Set GPx strenght = 8mA  | Set GPx output max current |
-| 33 | Set GPx strenght = 12mA | Set GPx output max current |
-| 35 | Get Gpx drive strenght  | Read strenght:  0: 2mA, 1: 4mA, 2: 8mA, 3: 12mA |
+| 30 | Set GPx strength = 2mA  | Set GPx output max current |
+| 31 | Set GPx strength = 4mA  | Set GPx output max current |
+| 32 | Set GPx strength = 8mA  | Set GPx output max current |
+| 33 | Set GPx strength = 12mA | Set GPx output max current |
+| 35 | Get Gpx drive strength  | Read strength:  0: 2mA, 1: 4mA, 2: 8mA, 3: 12mA |
 | 41 | Set pull_up GPx         | Add pull-up to Gpx  |
 | 45 | Get pull-up GPx         | Read pull-up state (1: pull-up active) |  
 | 50 | Disable pulls           | Remove  pull-up and pull-down  |
@@ -56,21 +94,35 @@ I2C Command is 2 bytes long:  Command_byte (1 byte) + Data (1 byte)
 | 61 | Set GPx to Pads State   | Write contains of command 60 on GPx |   
 | 65 | Get Pads state Gpx      | Read PAD register for Gpx |
 | 75 | Get GPIO function       | Read gpio function associated to gpio number|
-                               | XIP = 0, SPI=1, UART=2, I2C =3, PWM=4, SIO = 5 | 
-                               | PIO0 =6, PIO1=7, GPCK=8, USB=9, NULL = 0x1f | 
+|    |                         | XIP = 0, SPI=1, UART=2, I2C =3, PWM=4, SIO = 5 | 
+|    |                         | PIO0 =6, PIO1=7, GPCK=8, USB=9, NULL = 0x1f |
+| 80 | Set PWM State           | 1: Enable   0: Disable |   
+| 81 | Set PWM Frequency       | Freq in Khz 0=100Hz, 1= 1Khz, 255 = 255KHz (8 bits)| 
+|    |                         |                                           |
 |100 | Device Status           | Bit Status  (8 bits)             |  
 |    | Bit 0                   | Config Completed   0: true |
 |    | Bit 1                   | Command accepted   0: true |
 |    | Bit 2                   | Error  1= true |
 |    | Bit 3                   | watchdog trigged 1= true|
-| 101| Enable  UART            | setup uart mode  0: TX/RX, 1: TX/RX + CTS/RTS  |
-| 102| Disable UART            | setup uart to SIO mode:  0:input gpio, 1:output gpio  |
-| 103| Set UART protocol       | set uart protocol, see bits definition below |
+| 101| Enable  UART            | setup UART mode  0: TX/RX, 1: TX/RX + CTS/RTS  |
+| 102| Disable UART            | setup UART to SIO mode:  0:input gpio, 1:output gpio  |
+| 103| Set UART protocol       | set UART protocol, see bits definition below |
 | 105| Get UART config         | return 1 byte config protocol:  |
-                               | Bit 7-6  Baudrate   0:9600, 1:38400,2: 57600, 3:115200 |
-                               | Bit 5-4  parity  0: None, 1: Even, 2: Odd  |
-                               | Bit 3:2  data bits  0:5, 1:6, 2:7,3:8  |
-                               | Bit 1    stop bits  0:1 stop , 1:2 stops |
-                               | Bit 0    handshake RTS/CTS    0: None, 1: Used |
-
-
+|    |                         | Bit 7-6  Baudrate   0:19200, 1:38400,2: 57600, 3:115200 |
+|    |                         | Bit 5-4  parity  0: None, 1: Even, 2: Odd  |
+|    |                         | Bit 3:2  data bits  0:5, 1:6, 2:7,3:8  |
+|    |                         | Bit 1    stop bits  0:1 stop , 1:2 stops |
+|    |                         | Bit 0    handshake RTS/CTS    0: None, 1: Used |
+|    |                         |          |
+| 111| Enable  SPI             | 0: Enable, 1:Enable, Default configuration |
+| 112| Disable SPI             | Setup SPI to SIO mode:  0:input gpio, 1:output gpio  |
+| 113| Set SPI protocol        | set SPI protocol, see bits definition below |
+| 115| Get SPI config          | return 1 byte config protocol:  |
+|    |                         | Bit 7:4  Baudrate  Value * 100Khz  
+|    |                         | Bit 3  Databits  0:8, 1:16  |
+|    |                         | Bit 2:1  Mode  Clock Polarity, Clock Phase |
+|    |                         | ___ Mode 0:  Cpol:0 , Cpha 0 |
+|    |                         | ___ Mode 1:  Cpol:0 , Cpha 1 |
+|    |                         | ___ Mode 2:  Cpol:1 , Cpha 0 |
+|    |                         | ___ Mode 3:  Cpol:1 , Cpha 1 |
+|    |                         | Bit 0  SPI Status, 0:disable, 1:enable  Read only|

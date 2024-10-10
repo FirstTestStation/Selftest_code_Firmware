@@ -1,0 +1,169 @@
+\hypertarget{spi__slave_8c}{}\doxysection{IO\+\_\+selftest/spi\+\_\+slave.c File Reference}
+\label{spi__slave_8c}\index{IO\_selftest/spi\_slave.c@{IO\_selftest/spi\_slave.c}}
+
+
+function who control the UART serial communication port  
+
+
+{\ttfamily \#include $<$pico/stdlib.\+h$>$}\newline
+{\ttfamily \#include $<$stdio.\+h$>$}\newline
+{\ttfamily \#include $<$string.\+h$>$}\newline
+{\ttfamily \#include $<$stdbool.\+h$>$}\newline
+{\ttfamily \#include \char`\"{}hardware/irq.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}include/spi\+\_\+slave.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}hardware/spi.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}include/selftest.\+h\char`\"{}}\newline
+Include dependency graph for spi\+\_\+slave.\+c\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{spi__slave_8c__incl}
+\end{center}
+\end{figure}
+\doxysubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{structcfgspi}{cfgspi}}
+\begin{DoxyCompactList}\small\item\em Structure containing the SPI configuration byte. \end{DoxyCompactList}\item 
+union \mbox{\hyperlink{unionspi__stc}{spi\+\_\+stc}}
+\begin{DoxyCompactList}\small\item\em Union to manipulate the SPI configuration byte as bits or bytes. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{spi__slave_8c_ad0faec97250e97921f1dd63ef7a4c51f}{set\+\_\+default\+\_\+spi}} ()
+\begin{DoxyCompactList}\small\item\em Fill structure with the default spi configuration. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{spi__slave_8c_afab3aace397f8c89595ad989ab3c1f6b}{spi\+\_\+slave\+\_\+rx\+\_\+interrupt\+\_\+handler}} ()
+\begin{DoxyCompactList}\small\item\em spi slave receiver interrupt \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{spi__slave_8c_a3aa0b2ac8a5dda0fe85bf37a2c65b2d4}\label{spi__slave_8c_a3aa0b2ac8a5dda0fe85bf37a2c65b2d4}} 
+void \mbox{\hyperlink{spi__slave_8c_a3aa0b2ac8a5dda0fe85bf37a2c65b2d4}{enable\+\_\+spi}} (void)
+\begin{DoxyCompactList}\small\item\em Set the up spi slave object Use interrupt to send test data to the master. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{spi__slave_8c_a8a6d276f364d0cb9e63b4bf1e79b4c4b}{disable\+\_\+spi}} (uint8\+\_\+t mode)
+\begin{DoxyCompactList}\small\item\em function who disable the uart and setup uart pin to GPIO \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{spi__slave_8c_a96cab44a59394bd1522fff99ad2ca92a}\label{spi__slave_8c_a96cab44a59394bd1522fff99ad2ca92a}} 
+void \mbox{\hyperlink{spi__slave_8c_a96cab44a59394bd1522fff99ad2ca92a}{set\+\_\+spi\+\_\+com\+\_\+format}} ()
+\begin{DoxyCompactList}\small\item\em function to set the mode to use for spi communication \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{spi__slave_8c_aeee0d13f678de4e9e9d3542cbfe4f1fd}{set\+\_\+spi\+\_\+protocol}} (uint8\+\_\+t cfg\+\_\+spi, char $\ast$resultstr)
+\begin{DoxyCompactList}\small\item\em Set the SPI protocol structure with value received externally. \end{DoxyCompactList}\item 
+uint8\+\_\+t \mbox{\hyperlink{spi__slave_8c_a4f569d69662f370c03db2c0f6a7532cd}{get\+\_\+spi\+\_\+protocol}} (char $\ast$resultstr)
+\begin{DoxyCompactList}\small\item\em Get the spi protocol structure with value received externally. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{spi__slave_8c_a443f40d1f98ee9debaf9d0297fe7d6cc}{spi\+\_\+string\+\_\+protocol}} (char $\ast$protocol\+\_\+string)
+\begin{DoxyCompactList}\small\item\em From spi protocol byte, build a debug string. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{spi__slave_8c_ab53921073b8c239291a34432c58deb9b}\label{spi__slave_8c_ab53921073b8c239291a34432c58deb9b}} 
+uint8\+\_\+t \mbox{\hyperlink{spi__slave_8c_ab53921073b8c239291a34432c58deb9b}{rbytes}} \mbox{[}255\mbox{]}
+\begin{DoxyCompactList}\small\item\em SPI register for byte data (up to 255 bytes). \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{spi__slave_8c_a05fadd5ddaa9f0ef5ede4494b91e73bb}\label{spi__slave_8c_a05fadd5ddaa9f0ef5ede4494b91e73bb}} 
+uint16\+\_\+t \mbox{\hyperlink{spi__slave_8c_a05fadd5ddaa9f0ef5ede4494b91e73bb}{rwords}} \mbox{[}255\mbox{]}
+\begin{DoxyCompactList}\small\item\em SPI register for word data (up to 255 words). \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{spi__slave_8c_a2249937ff4d987c330c7604f91100ad0}\label{spi__slave_8c_a2249937ff4d987c330c7604f91100ad0}} 
+union \mbox{\hyperlink{unionspi__stc}{spi\+\_\+stc}} \mbox{\hyperlink{spi__slave_8c_a2249937ff4d987c330c7604f91100ad0}{spi}}
+\begin{DoxyCompactList}\small\item\em Global variable containing the SPI configuration. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+function who control the UART serial communication port 
+
+function who control SPI communication port in slave mode
+
+\begin{DoxyAuthor}{Author}
+Daniel Lockhead 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+2024
+\end{DoxyDate}
+\begin{DoxyCopyright}{Copyright}
+Copyright (c) 2024, D.\+Lockhead. All rights reserved.
+\end{DoxyCopyright}
+This software is licensed under the BSD 3-\/Clause License. See the LICENSE file for more details. 
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{spi__slave_8c_a8a6d276f364d0cb9e63b4bf1e79b4c4b}\label{spi__slave_8c_a8a6d276f364d0cb9e63b4bf1e79b4c4b}} 
+\index{spi\_slave.c@{spi\_slave.c}!disable\_spi@{disable\_spi}}
+\index{disable\_spi@{disable\_spi}!spi\_slave.c@{spi\_slave.c}}
+\doxysubsubsection{\texorpdfstring{disable\_spi()}{disable\_spi()}}
+{\footnotesize\ttfamily void disable\+\_\+spi (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{mode }\end{DoxyParamCaption})}
+
+
+
+function who disable the uart and setup uart pin to GPIO 
+
+
+\begin{DoxyParams}{Parameters}
+{\em mode} & Set Gpio pin as input(0) or output(1) \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{spi__slave_8c_a4f569d69662f370c03db2c0f6a7532cd}\label{spi__slave_8c_a4f569d69662f370c03db2c0f6a7532cd}} 
+\index{spi\_slave.c@{spi\_slave.c}!get\_spi\_protocol@{get\_spi\_protocol}}
+\index{get\_spi\_protocol@{get\_spi\_protocol}!spi\_slave.c@{spi\_slave.c}}
+\doxysubsubsection{\texorpdfstring{get\_spi\_protocol()}{get\_spi\_protocol()}}
+{\footnotesize\ttfamily uint8\+\_\+t get\+\_\+spi\+\_\+protocol (\begin{DoxyParamCaption}\item[{char $\ast$}]{resultstr }\end{DoxyParamCaption})}
+
+
+
+Get the spi protocol structure with value received externally. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em resultstr} & return a string with the protocol used on uart \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{spi__slave_8c_ad0faec97250e97921f1dd63ef7a4c51f}\label{spi__slave_8c_ad0faec97250e97921f1dd63ef7a4c51f}} 
+\index{spi\_slave.c@{spi\_slave.c}!set\_default\_spi@{set\_default\_spi}}
+\index{set\_default\_spi@{set\_default\_spi}!spi\_slave.c@{spi\_slave.c}}
+\doxysubsubsection{\texorpdfstring{set\_default\_spi()}{set\_default\_spi()}}
+{\footnotesize\ttfamily void set\+\_\+default\+\_\+spi (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Fill structure with the default spi configuration. 
+
+Set default Baudrate
+
+Set default mode.
+
+Set default data bit size.
+
+Disable by default\mbox{\Hypertarget{spi__slave_8c_aeee0d13f678de4e9e9d3542cbfe4f1fd}\label{spi__slave_8c_aeee0d13f678de4e9e9d3542cbfe4f1fd}} 
+\index{spi\_slave.c@{spi\_slave.c}!set\_spi\_protocol@{set\_spi\_protocol}}
+\index{set\_spi\_protocol@{set\_spi\_protocol}!spi\_slave.c@{spi\_slave.c}}
+\doxysubsubsection{\texorpdfstring{set\_spi\_protocol()}{set\_spi\_protocol()}}
+{\footnotesize\ttfamily void set\+\_\+spi\+\_\+protocol (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{cfg\+\_\+spi,  }\item[{char $\ast$}]{resultstr }\end{DoxyParamCaption})}
+
+
+
+Set the SPI protocol structure with value received externally. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em cfg\+\_\+spi} & One byte who define the spi protocol to use \\
+\hline
+{\em resultstr} & return a string with the protocol used on uart \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{spi__slave_8c_afab3aace397f8c89595ad989ab3c1f6b}\label{spi__slave_8c_afab3aace397f8c89595ad989ab3c1f6b}} 
+\index{spi\_slave.c@{spi\_slave.c}!spi\_slave\_rx\_interrupt\_handler@{spi\_slave\_rx\_interrupt\_handler}}
+\index{spi\_slave\_rx\_interrupt\_handler@{spi\_slave\_rx\_interrupt\_handler}!spi\_slave.c@{spi\_slave.c}}
+\doxysubsubsection{\texorpdfstring{spi\_slave\_rx\_interrupt\_handler()}{spi\_slave\_rx\_interrupt\_handler()}}
+{\footnotesize\ttfamily void spi\+\_\+slave\+\_\+rx\+\_\+interrupt\+\_\+handler (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+spi slave receiver interrupt 
+
+Two interrupts are received by command write\+\_\+read The first interrupt read the the data from source and the second interrupts write reverse data to the source \mbox{\Hypertarget{spi__slave_8c_a443f40d1f98ee9debaf9d0297fe7d6cc}\label{spi__slave_8c_a443f40d1f98ee9debaf9d0297fe7d6cc}} 
+\index{spi\_slave.c@{spi\_slave.c}!spi\_string\_protocol@{spi\_string\_protocol}}
+\index{spi\_string\_protocol@{spi\_string\_protocol}!spi\_slave.c@{spi\_slave.c}}
+\doxysubsubsection{\texorpdfstring{spi\_string\_protocol()}{spi\_string\_protocol()}}
+{\footnotesize\ttfamily void spi\+\_\+string\+\_\+protocol (\begin{DoxyParamCaption}\item[{char $\ast$}]{protocol\+\_\+string }\end{DoxyParamCaption})}
+
+
+
+From spi protocol byte, build a debug string. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em protocol\+\_\+string} & string to return to the caller \\
+\hline
+\end{DoxyParams}

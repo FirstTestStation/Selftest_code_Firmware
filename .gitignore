@@ -1,4 +1,9 @@
-.DS_Store
-.vscode
-build
-*.bat
+# Ignore everything in the build directory
+/build/*
+
+# But don't ignore the firmware directory inside build
+!/build/IO_selftest/
+
+# Only track .uf2 files in the firmware directory
+/build/IO_selftest/* 
+!/build/IO_selftest/*.elf
