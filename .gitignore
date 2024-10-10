@@ -7,3 +7,4 @@
 # Only track .uf2 files in the firmware directory
 /build/IO_selftest/* 
 !/build/IO_selftest/*.elf
+!/build/IO_selftest/*.uf2
