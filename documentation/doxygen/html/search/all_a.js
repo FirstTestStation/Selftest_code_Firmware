@@ -1,6 +1,5 @@
 var searchData=
 [
-  ['rbytes_61',['rbytes',['../spi__slave_8c.html#ab53921073b8c239291a34432c58deb9b',1,'spi_slave.c']]],
-  ['read_5fi2c_5faddress_62',['read_i2c_address',['../selftest_8c.html#a06d62829ea92c02b468ca8c148c43b4d',1,'selftest.c']]],
-  ['rwords_63',['rwords',['../spi__slave_8c.html#a05fadd5ddaa9f0ef5ede4494b91e73bb',1,'spi_slave.c']]]
+  ['queue_0',['queue',['../selftest_8c.html#ab0465a95499aab048b02601cd65e1ad6',1,'selftest.c']]],
+  ['queue_5fsize_1',['QUEUE_SIZE',['../selftest_8h.html#a142810068f1b99cd93d3fc9f0e160e02',1,'selftest.h']]]
 ];

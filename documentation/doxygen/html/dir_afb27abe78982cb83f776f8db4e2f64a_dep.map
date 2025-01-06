@@ -1,7 +1,7 @@
 <map id="IO_selftest" name="IO_selftest">
 <area shape="rect" id="node2" href="dir_6021115fc38b73254af000ed37195ec0.html" title="include" alt="" coords="36,123,108,171"/>
-<area shape="rect" id="edge1-headlabel" href="dir_000002_000003.html" title="7" alt="" coords="76,97,85,112"/>
+<area shape="rect" id="edge1-headlabel" href="dir_000003_000002.html" title="7" alt="" coords="76,97,85,112"/>
 <area shape="rect" id="node3" href="dir_8110339cd73e1a6c38acced3a8aaa629.html" title="i2c_slave" alt="" coords="139,123,221,171"/>
-<area shape="rect" id="edge2-headlabel" href="dir_000002_000000.html" title="2" alt="" coords="141,97,150,112"/>
+<area shape="rect" id="edge2-headlabel" href="dir_000003_000000.html" title="2" alt="" coords="141,97,150,112"/>
 <area shape="rect" id="clust1" href="dir_afb27abe78982cb83f776f8db4e2f64a.html" alt="" coords="16,16,128,181"/>
 </map>

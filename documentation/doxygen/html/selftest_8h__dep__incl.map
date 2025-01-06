@@ -1,5 +1,6 @@
 <map id="IO_selftest/include/selftest.h" name="IO_selftest/include/selftest.h">
-<area shape="rect" id="node1" title="Header function to main selftest loop." alt="" coords="103,5,246,47"/>
+<area shape="rect" id="node1" title="Header function to main selftest loop." alt="" coords="185,5,327,47"/>
 <area shape="rect" id="node2" href="$selftest_8c.html" title="Main loop to execute I2C instruction." alt="" coords="5,95,160,121"/>
-<area shape="rect" id="node3" href="$spi__slave_8c.html" title="function who control the UART serial communication port" alt="" coords="185,95,351,121"/>
+<area shape="rect" id="node3" href="$serial_8c.html" title="function who control the UART serial communication port" alt="" coords="185,95,327,121"/>
+<area shape="rect" id="node4" href="$spi__slave_8c.html" title="function who control SPI communication port in slave mode" alt="" coords="351,95,518,121"/>
 </map>

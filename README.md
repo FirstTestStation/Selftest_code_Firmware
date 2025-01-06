@@ -1,9 +1,9 @@
-# Selftest code firmware 
+# Selftest code firmware 700-2010-011
 
-This software code is written to be loaded on selftest board  500-1010-020.
+This software code is written to be loaded on Selftest board  500-1010-xxx.
 The communication with the Pico controller use the I2C protocol configured as slave.
 
-Command has received from the master controller ans the Pico selftest firmware execute
+Command has received from the master controller ans the Pico Selftest firmware execute
 the instruction and return answer to the sender
 
 The hardware support for the firmware is on github location: https://github.com/dlock8/Selftest_Board
@@ -15,45 +15,41 @@ This project is licensed under the BSD 3-Clause License. See the [LICENSE](./LIC
 
 ## Project setup
 
-This project has been developped on raspberry pi 4 following installation instruction from this pdf [getting-started-with-pico_C.pdf](./documentation/getting-started-with-pico_C.pdf),  a copy of the pdf is located on the main folder.
+This project was initially developed in 2020 on a Raspberry Pi 4, following the installation instructions from Getting Started with Pico_C.pdf Version 1.4.
 
-Visual studio has been used for development and raspberry pi 4 for Pico debug.  
+The current version has been developed on a Raspberry Pi 5 using Visual Studio with the Raspberry Pi Pico extension, following the instructions in Getting Started with Pico_C.pdf dated 15 October 2024.
 
 Based on https://github.com/vmilea/pico_i2c_slave. The pico_i2c_slave software has been added to enable the Raspberry Pi Pico to function as an I2C device.
 
+For debugging, we utilize the GPIO pins of the Raspberry Pi 5, instead of the suggested debug probe.
 
-The compilation is performed using Visual Studio and the important extension installed are:
+Doxygen installation is required (sudo apt install doxygen).
+Graphviz is required with doxygen (sudo apt install graphviz)
 
-* Cmake v0.0.17
-* Cmake Tools v1.20.10
-* Cortex-Debug v1.12.1
-* debug-tracker-vscode v0.0.15
+
+The compilation is performed using Visual Studio and the extension installed are:
+
+* Raspberry Pi Pico Visual Studio Code extension 0.17.2
 * Doxygen Documentation Generator v1.4.0
 * Doxygen runner v1.8.0
-* Github Pull Request v0.96.0
-* Hex Editor v1.10.0
-* MemoryView v0.0.25
-* peripheral Viewer v1.4.6
-* RTOS view v0.0.7
-* C/C++ v1.21.6
-
-
-I not sure if all extensions are required but is the one installed presently.
 
 
 ## Building
 
-Build of this cmake project is performed with Visual Studio
+Build of this cmake project is performed with Visual Studio using Pico Code extension (Compile Project)
 
 ## Development
 
 * [`selftest.c`](IO_selftest/selftest.c) is the main source file for the firmware.
 * [`CMakeLists.txt`](CMakeLists.txt) contains build instructions for CMake.
 * [`pico_sdk_import.cmake`](pico_sdk_import.cmake) was (as usual) copied verbatim from the Pico SDK and allows CMake to interact with the SDK’s functionality.
+* [`raspberrypi-swd.cfg`](raspberrypi-swd.cfg) need to be copied on openocd interface folder 
+(../.pico-sdk/openocd/0.12.0+dev/scripts/interface/) if GPIO pins is used to debug project.
+
 
 ## Installation
 
-* The Files ['selftest.uf2'](build/IO_selftest/selftest.uf2) contains the firmware to be loaded on the Pico RP2040 board using USB cable and boot button.
+* The Files ['SELFTEST_CODE.uf2'](build/IO_selftest/SELFTEST_CODE.uf2) contains the firmware to be loaded on the Pico RP2040 board using USB cable and boot button.
 * When software loaded, the Pico board should be installed on the location marked ST_CTRL on Selftest Board.
 * On board Pico Led will flash slowly (heartbeat) on power ON.
 
@@ -99,11 +95,11 @@ I2C Command is 2 bytes long:  Command_byte (1 byte) + Data (1 byte)
 | 80 | Set PWM State           | 1: Enable   0: Disable |   
 | 81 | Set PWM Frequency       | Freq in Khz 0=100Hz, 1= 1Khz, 255 = 255KHz (8 bits)| 
 |    |                         |                                           |
-|100 | Device Status           | Bit Status  (8 bits)             |  
+| 100| Device Status           | Bit Status  (8 bits)             |  
 |    | Bit 0                   | Config Completed   0: true |
 |    | Bit 1                   | Command accepted   0: true |
 |    | Bit 2                   | Error  1= true |
-|    | Bit 3                   | watchdog trigged 1= true|
+|    | Bit 3                   | watchdog triggered 1= true|
 | 101| Enable  UART            | setup UART mode  0: TX/RX, 1: TX/RX + CTS/RTS  |
 | 102| Disable UART            | setup UART to SIO mode:  0:input gpio, 1:output gpio  |
 | 103| Set UART protocol       | set UART protocol, see bits definition below |

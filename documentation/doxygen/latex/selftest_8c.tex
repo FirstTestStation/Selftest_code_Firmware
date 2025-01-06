@@ -41,6 +41,24 @@ void \mbox{\hyperlink{selftest_8c_a30321494f4854c4ecd9a6a05f82450f6}{set\+\_\+pw
 \begin{DoxyCompactList}\small\item\em Used on in development to loopback I2C to simulate master talking to slave. \end{DoxyCompactList}\item 
 int \mbox{\hyperlink{selftest_8c_ae66f6b31b5ad750f1fe042a706a4e3d4}{main}} ()
 \begin{DoxyCompactList}\small\item\em main loop to execute i2c command from master. Pico led is flashing to indicate heartbeat \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{selftest_8c_ab0465a95499aab048b02601cd65e1ad6}\label{selftest_8c_ab0465a95499aab048b02601cd65e1ad6}} 
+\begin{tabbing}
+xx\=xx\=xx\=xx\=xx\=xx\=xx\=xx\=xx\=\kill
+struct \{\\
+\>\mbox{\hyperlink{structMESSAGE}{MESSAGE}} {\bfseries messages} \mbox{[}\mbox{\hyperlink{selftest_8h_a142810068f1b99cd93d3fc9f0e160e02}{QUEUE\_SIZE}}\mbox{]}\\
+\>\>{\em Array of messages in the queue. }\\
+\>int {\bfseries begin}\\
+\>\>{\em Index of the queue\textquotesingle{}s first message. }\\
+\>int {\bfseries end}\\
+\>\>{\em Index of the queue\textquotesingle{}s last message. }\\
+\>int {\bfseries current\_load}\\
+\>\>{\em Number of messages currently in the queue. }\\
+\} {\bfseries queue}\\
+
+\end{tabbing}\begin{DoxyCompactList}\small\item\em Global structure for message queue management. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \doxysubsection{Detailed Description}

@@ -1,45 +1,38 @@
-This software code is written to be loaded on selftest board 500-\/1010-\/020. The communication with the Pico controller use the I2C protocol configured as slave.
+This software code is written to be loaded on selftest board 500-\/1010-\/xxx. The communication with the Pico controller use the I2C protocol configured as slave.
 
 Command has received from the master controller ans the Pico selftest firmware execute the instruction and return answer to the sender
 
 The hardware support for the firmware is on github location\+: \href{https://github.com/dlock8/Selftest_Board}{\texttt{ https\+://github.\+com/dlock8/\+Selftest\+\_\+\+Board}}\hypertarget{md_README_autotoc_md1}{}\doxysection{License}\label{md_README_autotoc_md1}
 This project is licensed under the BSD 3-\/Clause License. See the \href{./LICENSE}{\texttt{ LICENSE}} file for more details.\hypertarget{md_README_autotoc_md2}{}\doxysection{Project setup}\label{md_README_autotoc_md2}
-This project has been developped on raspberry pi 4 following installation instruction from this pdf \href{./documentation/getting-started-with-pico_C.pdf}{\texttt{ getting-\/started-\/with-\/pico\+\_\+\+C.\+pdf}}, a copy of the pdf is located on the main folder.
+This project was initially developed in 2020 on a Raspberry Pi 4, following the installation instructions from Getting Started with Pico\+\_\+\+C.\+pdf Version 1.\+4.
 
-Visual studio has been used for development and raspberry pi 4 for Pico debug. ~\newline
-
+The current version has been developed on a Raspberry Pi 5 using Visual Studio with the Raspberry Pi Pico extension, following the instructions in Getting Started with Pico\+\_\+\+C.\+pdf dated 15 October 2024.
 
 Based on \href{https://github.com/vmilea/pico_i2c_slave}{\texttt{ https\+://github.\+com/vmilea/pico\+\_\+i2c\+\_\+slave}}. The pico\+\_\+i2c\+\_\+slave software has been added to enable the Raspberry Pi Pico to function as an I2C device.
 
-The compilation is performed using Visual Studio and the important extension installed are\+:
+For debugging, we utilize the GPIO pins of the Raspberry Pi 5, instead of the suggested debug probe.
+
+Doxygen installation is required (sudo apt install doxygen). Graphviz is required with doxygen (sudo apt install graphviz)
+
+The compilation is performed using Visual Studio and the extension installed are\+:
 
 
 \begin{DoxyItemize}
-\item Cmake v0.\+0.\+17
-\item Cmake Tools v1.\+20.\+10
-\item Cortex-\/\+Debug v1.\+12.\+1
-\item debug-\/tracker-\/vscode v0.\+0.\+15
+\item Raspberry Pi Pico Visual Studio Code extension 0.\+17.\+2
 \item Doxygen Documentation Generator v1.\+4.\+0
 \item Doxygen runner v1.\+8.\+0
-\item Github Pull Request v0.\+96.\+0
-\item Hex Editor v1.\+10.\+0
-\item Memory\+View v0.\+0.\+25
-\item peripheral Viewer v1.\+4.\+6
-\item RTOS view v0.\+0.\+7
-\item C/\+C++ v1.\+21.\+6
-\end{DoxyItemize}
-
-I not sure if all extensions are required but is the one installed presently.\hypertarget{md_README_autotoc_md3}{}\doxysection{Building}\label{md_README_autotoc_md3}
-Build of this cmake project is performed with Visual Studio\hypertarget{md_README_autotoc_md4}{}\doxysection{Development}\label{md_README_autotoc_md4}
+\end{DoxyItemize}\hypertarget{md_README_autotoc_md3}{}\doxysection{Building}\label{md_README_autotoc_md3}
+Build of this cmake project is performed with Visual Studio using Pico Code extension (Compile Project)\hypertarget{md_README_autotoc_md4}{}\doxysection{Development}\label{md_README_autotoc_md4}
 
 \begin{DoxyItemize}
 \item \href{IO_selftest/selftest.c}{\texttt{ {\ttfamily selftest.\+c}}} is the main source file for the firmware.
 \item \href{CMakeLists.txt}{\texttt{ {\ttfamily CMake\+Lists.\+txt}}} contains build instructions for CMake.
 \item \href{pico_sdk_import.cmake}{\texttt{ {\ttfamily pico\+\_\+sdk\+\_\+import.\+cmake}}} was (as usual) copied verbatim from the Pico SDK and allows CMake to interact with the SDK’s functionality.
+\item \href{raspberrypi-swd.cfg}{\texttt{ {\ttfamily raspberrypi-\/swd.\+cfg}}} need to be copied on opencd interface folder (../.pico-\/sdk/openocd/0.\+12.\+0+dev/scripts/interface/) if GPIO pins is used to debug project.
 \end{DoxyItemize}\hypertarget{md_README_autotoc_md5}{}\doxysection{Installation}\label{md_README_autotoc_md5}
 
 \begin{DoxyItemize}
-\item The Files \href{build/IO_selftest/selftest.uf2}{\texttt{ \textquotesingle{}selftest.\+uf2\textquotesingle{}}} contains the firmware to be loaded on the Pico RP2040 board using USB cable and boot button.
+\item The Files \href{build/IO_selftest/SELFTEST_CODE.uf2}{\texttt{ \textquotesingle{}SELFTEST\+\_\+\+CODE.\+uf2\textquotesingle{}}} contains the firmware to be loaded on the Pico RP2040 board using USB cable and boot button.
 \item When software loaded, the Pico board should be installed on the location marked ST\+\_\+\+CTRL on Selftest Board.
 \item On board Pico Led will flash slowly (heartbeat) on power ON.
 \end{DoxyItemize}\hypertarget{md_README_autotoc_md6}{}\doxysubsection{Setup}\label{md_README_autotoc_md6}

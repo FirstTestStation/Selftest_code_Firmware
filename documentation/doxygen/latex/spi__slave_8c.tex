@@ -2,7 +2,7 @@
 \label{spi__slave_8c}\index{IO\_selftest/spi\_slave.c@{IO\_selftest/spi\_slave.c}}
 
 
-function who control the UART serial communication port  
+function who control SPI communication port in slave mode  
 
 
 {\ttfamily \#include $<$pico/stdlib.\+h$>$}\newline
@@ -35,12 +35,12 @@ void \mbox{\hyperlink{spi__slave_8c_ad0faec97250e97921f1dd63ef7a4c51f}{set\+\_\+
 void \mbox{\hyperlink{spi__slave_8c_afab3aace397f8c89595ad989ab3c1f6b}{spi\+\_\+slave\+\_\+rx\+\_\+interrupt\+\_\+handler}} ()
 \begin{DoxyCompactList}\small\item\em spi slave receiver interrupt \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{spi__slave_8c_a3aa0b2ac8a5dda0fe85bf37a2c65b2d4}\label{spi__slave_8c_a3aa0b2ac8a5dda0fe85bf37a2c65b2d4}} 
-void \mbox{\hyperlink{spi__slave_8c_a3aa0b2ac8a5dda0fe85bf37a2c65b2d4}{enable\+\_\+spi}} (void)
+void {\bfseries enable\+\_\+spi} (void)
 \begin{DoxyCompactList}\small\item\em Set the up spi slave object Use interrupt to send test data to the master. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{spi__slave_8c_a8a6d276f364d0cb9e63b4bf1e79b4c4b}{disable\+\_\+spi}} (uint8\+\_\+t mode)
 \begin{DoxyCompactList}\small\item\em function who disable the uart and setup uart pin to GPIO \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{spi__slave_8c_a96cab44a59394bd1522fff99ad2ca92a}\label{spi__slave_8c_a96cab44a59394bd1522fff99ad2ca92a}} 
-void \mbox{\hyperlink{spi__slave_8c_a96cab44a59394bd1522fff99ad2ca92a}{set\+\_\+spi\+\_\+com\+\_\+format}} ()
+void {\bfseries set\+\_\+spi\+\_\+com\+\_\+format} ()
 \begin{DoxyCompactList}\small\item\em function to set the mode to use for spi communication \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{spi__slave_8c_aeee0d13f678de4e9e9d3542cbfe4f1fd}{set\+\_\+spi\+\_\+protocol}} (uint8\+\_\+t cfg\+\_\+spi, char $\ast$resultstr)
 \begin{DoxyCompactList}\small\item\em Set the SPI protocol structure with value received externally. \end{DoxyCompactList}\item 
@@ -52,20 +52,18 @@ void \mbox{\hyperlink{spi__slave_8c_a443f40d1f98ee9debaf9d0297fe7d6cc}{spi\+\_\+
 \begin{DoxyCompactItemize}
 \item 
 \mbox{\Hypertarget{spi__slave_8c_ab53921073b8c239291a34432c58deb9b}\label{spi__slave_8c_ab53921073b8c239291a34432c58deb9b}} 
-uint8\+\_\+t \mbox{\hyperlink{spi__slave_8c_ab53921073b8c239291a34432c58deb9b}{rbytes}} \mbox{[}255\mbox{]}
+uint8\+\_\+t {\bfseries rbytes} \mbox{[}255\mbox{]}
 \begin{DoxyCompactList}\small\item\em SPI register for byte data (up to 255 bytes). \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{spi__slave_8c_a05fadd5ddaa9f0ef5ede4494b91e73bb}\label{spi__slave_8c_a05fadd5ddaa9f0ef5ede4494b91e73bb}} 
-uint16\+\_\+t \mbox{\hyperlink{spi__slave_8c_a05fadd5ddaa9f0ef5ede4494b91e73bb}{rwords}} \mbox{[}255\mbox{]}
+uint16\+\_\+t {\bfseries rwords} \mbox{[}255\mbox{]}
 \begin{DoxyCompactList}\small\item\em SPI register for word data (up to 255 words). \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{spi__slave_8c_a2249937ff4d987c330c7604f91100ad0}\label{spi__slave_8c_a2249937ff4d987c330c7604f91100ad0}} 
-union \mbox{\hyperlink{unionspi__stc}{spi\+\_\+stc}} \mbox{\hyperlink{spi__slave_8c_a2249937ff4d987c330c7604f91100ad0}{spi}}
+union \mbox{\hyperlink{unionspi__stc}{spi\+\_\+stc}} {\bfseries spi}
 \begin{DoxyCompactList}\small\item\em Global variable containing the SPI configuration. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \doxysubsection{Detailed Description}
-function who control the UART serial communication port 
-
-function who control SPI communication port in slave mode
+function who control SPI communication port in slave mode 
 
 \begin{DoxyAuthor}{Author}
 Daniel Lockhead 

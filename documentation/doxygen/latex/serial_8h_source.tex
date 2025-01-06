@@ -1,0 +1,64 @@
+\hypertarget{serial_8h_source}{}\doxysection{serial.\+h}
+\label{serial_8h_source}\index{IO\_selftest/include/serial.h@{IO\_selftest/include/serial.h}}
+\mbox{\hyperlink{serial_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 }
+\DoxyCodeLine{15 \textcolor{preprocessor}{\#ifndef \_SERIAL\_H\_}}
+\DoxyCodeLine{16 \textcolor{preprocessor}{\#define \_SERIAL\_H\_}}
+\DoxyCodeLine{17 }
+\DoxyCodeLine{18 }
+\DoxyCodeLine{19 }
+\DoxyCodeLine{20 \textcolor{preprocessor}{\#ifdef \_\_cplusplus}}
+\DoxyCodeLine{21 \textcolor{keyword}{extern} \textcolor{stringliteral}{"{}C"{}} \{}
+\DoxyCodeLine{22 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{23 }
+\DoxyCodeLine{27 \textcolor{preprocessor}{\#define UART\_ID      uart0       }}
+\DoxyCodeLine{28 \textcolor{preprocessor}{\#define BAUD\_RATE    115200      }}
+\DoxyCodeLine{29 \textcolor{preprocessor}{\#define DATA\_BITS    8           }}
+\DoxyCodeLine{30 \textcolor{preprocessor}{\#define STOP\_BITS    1           }}
+\DoxyCodeLine{31 \textcolor{preprocessor}{\#define PARITY       UART\_PARITY\_NONE  }}
+\DoxyCodeLine{32 }
+\DoxyCodeLine{36 \textcolor{preprocessor}{\#define SP9\_6K       0  }}
+\DoxyCodeLine{37 \textcolor{preprocessor}{\#define SP38\_4K      1  }}
+\DoxyCodeLine{38 \textcolor{preprocessor}{\#define SP57\_6K      2  }}
+\DoxyCodeLine{39 \textcolor{preprocessor}{\#define SP115\_2K     3  }}
+\DoxyCodeLine{40 }
+\DoxyCodeLine{44 \textcolor{preprocessor}{\#define STOP1        1  }}
+\DoxyCodeLine{45 \textcolor{preprocessor}{\#define STOP2        2  }}
+\DoxyCodeLine{46 }
+\DoxyCodeLine{50 \textcolor{preprocessor}{\#define UPAR\_NONE    0  }}
+\DoxyCodeLine{51 \textcolor{preprocessor}{\#define UPAR\_EVEN    1  }}
+\DoxyCodeLine{52 \textcolor{preprocessor}{\#define UPAR\_ODD     2  }}
+\DoxyCodeLine{53 }
+\DoxyCodeLine{57 \textcolor{preprocessor}{\#define D5BIT        0  }}
+\DoxyCodeLine{58 \textcolor{preprocessor}{\#define D6BIT        1  }}
+\DoxyCodeLine{59 \textcolor{preprocessor}{\#define D7BIT        2  }}
+\DoxyCodeLine{60 \textcolor{preprocessor}{\#define D8BIT        3  }}
+\DoxyCodeLine{61 }
+\DoxyCodeLine{65 \textcolor{preprocessor}{\#define HAND\_NO      0  }}
+\DoxyCodeLine{66 \textcolor{preprocessor}{\#define HAND\_YES     1  }}
+\DoxyCodeLine{67 }
+\DoxyCodeLine{71 \textcolor{preprocessor}{\#define UART\_TX\_PIN  12  }}
+\DoxyCodeLine{72 \textcolor{preprocessor}{\#define UART\_RX\_PIN  13  }}
+\DoxyCodeLine{73 \textcolor{preprocessor}{\#define UART\_CTS\_PIN 14  }}
+\DoxyCodeLine{74 \textcolor{preprocessor}{\#define UART\_RTS\_PIN 15  }}
+\DoxyCodeLine{75 }
+\DoxyCodeLine{76 }
+\DoxyCodeLine{77 \textcolor{keywordtype}{void} \mbox{\hyperlink{serial_8h_a333ad4eac2ff98d51fa64f910cbc0309}{enable\_uart}}(uint8\_t rts\_cts);}
+\DoxyCodeLine{78 \textcolor{keywordtype}{void} \mbox{\hyperlink{serial_8h_adfebc8aca6626b78b0e06258c5063ff0}{disable\_uart}}(uint8\_t mode);}
+\DoxyCodeLine{79 \textcolor{keywordtype}{void} \mbox{\hyperlink{serial_8h_a020ad167d747134201ad614415d034b6}{set\_default\_serial}}(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{80 \textcolor{keywordtype}{void} \mbox{\hyperlink{serial_8h_aaac071176b487fb58f4e37e8e4fc0bc4}{set\_uart\_protocol}}(uint8\_t cfg\_uart, \textcolor{keywordtype}{char}* resultstr);}
+\DoxyCodeLine{81 uint8\_t \mbox{\hyperlink{serial_8h_accb63e465a1f86b29e2aac125acbd549}{get\_uart\_protocol}}(\textcolor{keywordtype}{char}* resultstr);}
+\DoxyCodeLine{82 }
+\DoxyCodeLine{83 \textcolor{preprocessor}{\#ifdef DEBUG\_CODE}}
+\DoxyCodeLine{84 \textcolor{keywordtype}{void} test\_serial\_command(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{85 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{86 }
+\DoxyCodeLine{87 \textcolor{preprocessor}{\#ifdef \_\_cplusplus}}
+\DoxyCodeLine{88 \}}
+\DoxyCodeLine{89 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{90 }
+\DoxyCodeLine{91 \textcolor{preprocessor}{\#endif }\textcolor{comment}{//}}
+\DoxyCodeLine{92 }
+
+\end{DoxyCode}

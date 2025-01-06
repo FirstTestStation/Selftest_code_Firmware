@@ -25,7 +25,7 @@
 var NAVTREE =
 [
   [ "Selftest Firmware", "index.html", [
-    [ "Selftest code firmware", "md_README.html", [
+    [ "Selftest code firmware 700-2010-011", "md_README.html", [
       [ "License", "md_README.html#autotoc_md1", null ],
       [ "Project setup", "md_README.html#autotoc_md2", null ],
       [ "Building", "md_README.html#autotoc_md3", null ],

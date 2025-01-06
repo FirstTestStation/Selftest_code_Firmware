@@ -1,0 +1,54 @@
+\hypertarget{selftest_8h_source}{}\doxysection{selftest.\+h}
+\label{selftest_8h_source}\index{IO\_selftest/include/selftest.h@{IO\_selftest/include/selftest.h}}
+\mbox{\hyperlink{selftest_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 }
+\DoxyCodeLine{15 \textcolor{preprocessor}{\#ifndef \_SELFTEST\_H\_}}
+\DoxyCodeLine{16 \textcolor{preprocessor}{\#define \_SELFTEST\_H\_}}
+\DoxyCodeLine{17 }
+\DoxyCodeLine{18 \textcolor{preprocessor}{\#ifdef \_\_cplusplus}}
+\DoxyCodeLine{19 \textcolor{keyword}{extern} \textcolor{stringliteral}{"{}C"{}}}
+\DoxyCodeLine{20 \{}
+\DoxyCodeLine{21 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{22 }
+\DoxyCodeLine{23   \textcolor{comment}{//\#define DEBUG\_CODE  // DEbug mode for test code using i2c loopback}}
+\DoxyCodeLine{24 }
+\DoxyCodeLine{25   \textcolor{comment}{// For help debug code on selftest board,  a loopback has been made using gpio reserved}}
+\DoxyCodeLine{26   \textcolor{comment}{// for JTAG testing. If debug is defined, the slave i2C pin are modified to be connected}}
+\DoxyCodeLine{27   \textcolor{comment}{// on the loopback}}
+\DoxyCodeLine{28 }
+\DoxyCodeLine{29 \textcolor{preprocessor}{\#ifdef DEBUG\_CODE}}
+\DoxyCodeLine{33 \textcolor{preprocessor}{\#define I2C\_SLAVE\_SDA\_PIN 18  }}
+\DoxyCodeLine{34 \textcolor{preprocessor}{\#define I2C\_SLAVE\_SCL\_PIN 19  }}
+\DoxyCodeLine{35 \textcolor{preprocessor}{\#define I2C\_MASTER\_SDA\_PIN 16 }}
+\DoxyCodeLine{36 \textcolor{preprocessor}{\#define I2C\_MASTER\_SCL\_PIN 17 }}
+\DoxyCodeLine{37 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{38 }
+\DoxyCodeLine{39 \textcolor{preprocessor}{\#ifndef DEBUG\_CODE}}
+\DoxyCodeLine{43 \textcolor{preprocessor}{\#define I2C\_SLAVE\_SDA\_PIN 6 }}
+\DoxyCodeLine{44 \textcolor{preprocessor}{\#define I2C\_SLAVE\_SCL\_PIN 7 }}
+\DoxyCodeLine{45 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{46 }
+\DoxyCodeLine{47 \textcolor{preprocessor}{\#define MESSAGE\_SIZE 120  }}
+\DoxyCodeLine{48 \textcolor{preprocessor}{\#define QUEUE\_SIZE 255     }}
+\DoxyCodeLine{49 \textcolor{preprocessor}{\#define WATCHDOG\_TIMEOUT\_MS 10000  }}
+\DoxyCodeLine{50 \textcolor{preprocessor}{\#define GPIOF 10  }}
+\DoxyCodeLine{51 }
+\DoxyCodeLine{52 }
+\DoxyCodeLine{56 \textcolor{keyword}{typedef} \textcolor{keyword}{struct}}
+\DoxyCodeLine{57 \{}
+\DoxyCodeLine{58     \textcolor{keywordtype}{char} data[\mbox{\hyperlink{selftest_8h_aeca90e1c1c62b70670514ffc18c9dfd4}{MESSAGE\_SIZE}}];  }
+\DoxyCodeLine{59 \} \mbox{\hyperlink{structMESSAGE}{MESSAGE}};}
+\DoxyCodeLine{60 }
+\DoxyCodeLine{61 }
+\DoxyCodeLine{62 }
+\DoxyCodeLine{63   \textcolor{keywordtype}{bool} \mbox{\hyperlink{selftest_8h_a859df203fa7c1fb839e68ce8f39ac6f6}{enque}}(\mbox{\hyperlink{structMESSAGE}{MESSAGE}}* message);}
+\DoxyCodeLine{64   \textcolor{keywordtype}{void} \mbox{\hyperlink{selftest_8h_a30321494f4854c4ecd9a6a05f82450f6}{set\_pwm\_frequency}}(\textcolor{keywordtype}{bool} setpwm, uint8\_t sfreq);}
+\DoxyCodeLine{65 }
+\DoxyCodeLine{66 \textcolor{preprocessor}{\#ifdef \_\_cplusplus}}
+\DoxyCodeLine{67 \}}
+\DoxyCodeLine{68 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{69 }
+\DoxyCodeLine{70 \textcolor{preprocessor}{\#endif  }\textcolor{comment}{//}}
+
+\end{DoxyCode}

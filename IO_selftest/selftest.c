@@ -29,7 +29,7 @@
 #include "include/spi_slave.h"
 #include "include/selftest.h"
 
-static const uint I2C_OFFSET_ADDRESS = 0x20;  // ofsset to add to the physical address read
+static const uint I2C_OFFSET_ADDRESS = 0x20;  // offset to add to the physical address read
 static const uint REG_STATUS = 100;           // Register used to report Status
 
 static const uint I2C_BAUDRATE = 100000;       // 100 kHz
@@ -42,6 +42,19 @@ static const uint32_t GPIO_BOOT_MASK = 0b00011100011111111111111111111111;
 static const uint32_t GPIO_SET_DIR_MASK = 0b0010000010000000000000000000;  // GPIO MASK
 static const uint32_t GPIO_SELF_OUT_MASK = 0x00ul;                         // All output to 0
 static const uint32_t GPIO_SELF_DIR_MASK = 0b00010000000000000000000000000000;
+
+
+/**
+ * @brief Global structure for message queue management.
+ */
+struct
+{
+    MESSAGE messages[QUEUE_SIZE];  ///< Array of messages in the queue.
+    int begin;                     ///< Index of the queue's first message.
+    int end;                       ///< Index of the queue's last message.
+    int current_load;              ///< Number of messages currently in the queue.
+} queue;
+
 
 /**
  * @brief Enqueue a message into the queue.
@@ -341,7 +354,7 @@ static void i2c_slave_handler(i2c_inst_t* i2c, i2c_slave_event_t event)
 
         case 35:                                                               // get GPIO strength
           svalue = gpio_get_drive_strength(context.reg[context.reg_address]);  // Read strength Value
-          sprintf(&rec.data[0], "Cmd %02d, Read strenght Gpio: %02d ,State: %01d ", cmd, context.reg[context.reg_address], svalue);
+          sprintf(&rec.data[0], "Cmd %02d, Read strength Gpio: %02d ,State: %01d ", cmd, context.reg[context.reg_address], svalue);
           enque(&rec);
           context.reg[context.reg_address] = svalue;
           break;

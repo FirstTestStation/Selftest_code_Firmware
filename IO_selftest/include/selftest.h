@@ -49,6 +49,7 @@ extern "C"
 #define WATCHDOG_TIMEOUT_MS 10000  ///< Watchdog timeout (10 seconds).
 #define GPIOF 10  ///< GPIO pin used to generate frequency output.
 
+
 /**
  * @brief Structure representing a message.
  */
@@ -57,16 +58,6 @@ typedef struct
     char data[MESSAGE_SIZE];  ///< Data contained in the message.
 } MESSAGE;
 
-/**
- * @brief Global structure for message queue management.
- */
-struct
-{
-    MESSAGE messages[QUEUE_SIZE];  ///< Array of messages in the queue.
-    int begin;                     ///< Index of the queue's first message.
-    int end;                       ///< Index of the queue's last message.
-    int current_load;              ///< Number of messages currently in the queue.
-} queue;
 
 
   bool enque(MESSAGE* message);

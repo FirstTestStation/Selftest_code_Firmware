@@ -1,0 +1,10 @@
+<map id="IO_selftest/serial.c" name="IO_selftest/serial.c">
+<area shape="rect" id="node1" title="function who control the UART serial communication port" alt="" coords="309,5,451,32"/>
+<area shape="rect" id="node2" title=" " alt="" coords="5,80,72,107"/>
+<area shape="rect" id="node3" title=" " alt="" coords="97,80,167,107"/>
+<area shape="rect" id="node4" title=" " alt="" coords="192,80,293,107"/>
+<area shape="rect" id="node5" title=" " alt="" coords="317,80,443,107"/>
+<area shape="rect" id="node6" title=" " alt="" coords="467,80,583,107"/>
+<area shape="rect" id="node7" href="$serial_8h.html" title="Header function to UART serial communication." alt="" coords="607,80,729,107"/>
+<area shape="rect" id="node8" href="$selftest_8h.html" title="Header function to main selftest loop." alt="" coords="753,80,887,107"/>
+</map>

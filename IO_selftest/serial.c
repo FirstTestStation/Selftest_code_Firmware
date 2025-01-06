@@ -202,6 +202,7 @@ void disable_uart(uint8_t mode)
  * @brief From uart protocol byte, build a debug string
  *
  * @param protocol_string string to return to the caller
+ * @param set Flag to indicate to update format or not
  */
 void uart_string_protocol(char* protocol_string, bool set)
 {
@@ -234,7 +235,7 @@ void uart_string_protocol(char* protocol_string, bool set)
 /**
  * @brief Set the uart protocol structure with value received externally
  *
- * @param cfg_uart  One byte who define thr uart prtocol to use
+ * @param cfg_uart  One byte who define thr uart protocol to use
  * @param resultstr  return a string with the protocol used on uart
  */
 void set_uart_protocol(uint8_t cfg_uart, char* resultstr)

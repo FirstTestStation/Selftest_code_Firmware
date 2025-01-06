@@ -1,0 +1,149 @@
+\hypertarget{serial_8c}{}\doxysection{IO\+\_\+selftest/serial.c File Reference}
+\label{serial_8c}\index{IO\_selftest/serial.c@{IO\_selftest/serial.c}}
+
+
+function who control the UART serial communication port  
+
+
+{\ttfamily \#include $<$stdio.\+h$>$}\newline
+{\ttfamily \#include $<$string.\+h$>$}\newline
+{\ttfamily \#include \char`\"{}pico/stdlib.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}hardware/uart.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}hardware/irq.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}include/serial.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}include/selftest.\+h\char`\"{}}\newline
+Include dependency graph for serial.\+c\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{serial_8c__incl}
+\end{center}
+\end{figure}
+\doxysubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{structcfgu}{cfgu}}
+\begin{DoxyCompactList}\small\item\em Structure containing the serial configuration byte. \end{DoxyCompactList}\item 
+union \mbox{\hyperlink{unionuartc}{uartc}}
+\begin{DoxyCompactList}\small\item\em Union to manipulate the configuration byte as bits or bytes. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{serial_8c_ad7fec5b2b07b712822dc8182d1796c22}\label{serial_8c_ad7fec5b2b07b712822dc8182d1796c22}} 
+void {\bfseries on\+\_\+uart\+\_\+rx} ()
+\begin{DoxyCompactList}\small\item\em RX interrupt handler work in loopback mode, the character received is transmit back to the caller. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{serial_8c_a033fccdefdc4c85de3ebd7e92d3af780}\label{serial_8c_a033fccdefdc4c85de3ebd7e92d3af780}} 
+void {\bfseries set\+\_\+default\+\_\+serial} ()
+\begin{DoxyCompactList}\small\item\em Fill structure with the default uart configuration. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{serial_8c_a333ad4eac2ff98d51fa64f910cbc0309}{enable\+\_\+uart}} (uint8\+\_\+t rts\+\_\+cts)
+\begin{DoxyCompactList}\small\item\em function who enable the uart and setup RX interrupt \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{serial_8c_adfebc8aca6626b78b0e06258c5063ff0}{disable\+\_\+uart}} (uint8\+\_\+t mode)
+\begin{DoxyCompactList}\small\item\em function who disable the uart and setup uart pin to GPIO \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{serial_8c_a2eacd9a792216aab7d106a87a8b31e1e}{uart\+\_\+string\+\_\+protocol}} (char $\ast$protocol\+\_\+string, bool set)
+\begin{DoxyCompactList}\small\item\em From uart protocol byte, build a debug string. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{serial_8c_aaac071176b487fb58f4e37e8e4fc0bc4}{set\+\_\+uart\+\_\+protocol}} (uint8\+\_\+t cfg\+\_\+uart, char $\ast$resultstr)
+\begin{DoxyCompactList}\small\item\em Set the uart protocol structure with value received externally. \end{DoxyCompactList}\item 
+uint8\+\_\+t \mbox{\hyperlink{serial_8c_accb63e465a1f86b29e2aac125acbd549}{get\+\_\+uart\+\_\+protocol}} (char $\ast$resultstr)
+\begin{DoxyCompactList}\small\item\em Get the uart protocol structure with value received externally. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{serial_8c_ab2d59359f916ad64a6347d1585f22666}\label{serial_8c_ab2d59359f916ad64a6347d1585f22666}} 
+union \mbox{\hyperlink{unionuartc}{uartc}} {\bfseries serial}
+\begin{DoxyCompactList}\small\item\em global variable who contains configuration \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+function who control the UART serial communication port 
+
+\begin{DoxyAuthor}{Author}
+Daniel Lockhead 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+2024
+\end{DoxyDate}
+\begin{DoxyCopyright}{Copyright}
+Copyright (c) 2024, D.\+Lockhead. All rights reserved.
+\end{DoxyCopyright}
+This software is licensed under the BSD 3-\/Clause License. See the LICENSE file for more details. 
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{serial_8c_adfebc8aca6626b78b0e06258c5063ff0}\label{serial_8c_adfebc8aca6626b78b0e06258c5063ff0}} 
+\index{serial.c@{serial.c}!disable\_uart@{disable\_uart}}
+\index{disable\_uart@{disable\_uart}!serial.c@{serial.c}}
+\doxysubsubsection{\texorpdfstring{disable\_uart()}{disable\_uart()}}
+{\footnotesize\ttfamily void disable\+\_\+uart (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{mode }\end{DoxyParamCaption})}
+
+
+
+function who disable the uart and setup uart pin to GPIO 
+
+
+\begin{DoxyParams}{Parameters}
+{\em mode} & Set Gpio pin as input(0) or output(1) \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{serial_8c_a333ad4eac2ff98d51fa64f910cbc0309}\label{serial_8c_a333ad4eac2ff98d51fa64f910cbc0309}} 
+\index{serial.c@{serial.c}!enable\_uart@{enable\_uart}}
+\index{enable\_uart@{enable\_uart}!serial.c@{serial.c}}
+\doxysubsubsection{\texorpdfstring{enable\_uart()}{enable\_uart()}}
+{\footnotesize\ttfamily void enable\+\_\+uart (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{rts\+\_\+cts }\end{DoxyParamCaption})}
+
+
+
+function who enable the uart and setup RX interrupt 
+
+
+\begin{DoxyParams}{Parameters}
+{\em rts\+\_\+cts} & Enable RTS-\/\+CTS handshake if rts\+\_\+cts = 1 \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{serial_8c_accb63e465a1f86b29e2aac125acbd549}\label{serial_8c_accb63e465a1f86b29e2aac125acbd549}} 
+\index{serial.c@{serial.c}!get\_uart\_protocol@{get\_uart\_protocol}}
+\index{get\_uart\_protocol@{get\_uart\_protocol}!serial.c@{serial.c}}
+\doxysubsubsection{\texorpdfstring{get\_uart\_protocol()}{get\_uart\_protocol()}}
+{\footnotesize\ttfamily uint8\+\_\+t get\+\_\+uart\+\_\+protocol (\begin{DoxyParamCaption}\item[{char $\ast$}]{resultstr }\end{DoxyParamCaption})}
+
+
+
+Get the uart protocol structure with value received externally. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em resultstr} & return a string with the protocol used on uart \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{serial_8c_aaac071176b487fb58f4e37e8e4fc0bc4}\label{serial_8c_aaac071176b487fb58f4e37e8e4fc0bc4}} 
+\index{serial.c@{serial.c}!set\_uart\_protocol@{set\_uart\_protocol}}
+\index{set\_uart\_protocol@{set\_uart\_protocol}!serial.c@{serial.c}}
+\doxysubsubsection{\texorpdfstring{set\_uart\_protocol()}{set\_uart\_protocol()}}
+{\footnotesize\ttfamily void set\+\_\+uart\+\_\+protocol (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{cfg\+\_\+uart,  }\item[{char $\ast$}]{resultstr }\end{DoxyParamCaption})}
+
+
+
+Set the uart protocol structure with value received externally. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em cfg\+\_\+uart} & One byte who define thr uart prtocol to use \\
+\hline
+{\em resultstr} & return a string with the protocol used on uart \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{serial_8c_a2eacd9a792216aab7d106a87a8b31e1e}\label{serial_8c_a2eacd9a792216aab7d106a87a8b31e1e}} 
+\index{serial.c@{serial.c}!uart\_string\_protocol@{uart\_string\_protocol}}
+\index{uart\_string\_protocol@{uart\_string\_protocol}!serial.c@{serial.c}}
+\doxysubsubsection{\texorpdfstring{uart\_string\_protocol()}{uart\_string\_protocol()}}
+{\footnotesize\ttfamily void uart\+\_\+string\+\_\+protocol (\begin{DoxyParamCaption}\item[{char $\ast$}]{protocol\+\_\+string,  }\item[{bool}]{set }\end{DoxyParamCaption})}
+
+
+
+From uart protocol byte, build a debug string. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em protocol\+\_\+string} & string to return to the caller \\
+\hline
+{\em set} & Flag to indicate to update format or not \\
+\hline
+\end{DoxyParams}
