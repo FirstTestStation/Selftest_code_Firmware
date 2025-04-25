@@ -43,7 +43,6 @@ static const uint32_t GPIO_SET_DIR_MASK = 0b0010000010000000000000000000;  // GP
 static const uint32_t GPIO_SELF_OUT_MASK = 0x00ul;                         // All output to 0
 static const uint32_t GPIO_SELF_DIR_MASK = 0b00010000000000000000000000000000;
 
-
 /**
  * @brief Global structure for message queue management.
  */

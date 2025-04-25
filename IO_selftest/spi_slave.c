@@ -82,10 +82,6 @@ void spi_slave_rx_interrupt_handler()
   MESSAGE rec;
   int x = 0;  // number of character received in read portion
 
-  sprintf(&rec.data[0], "\nSPI Slave Interrupt Received");
-  enque(&rec);
-
-  // loop to read each character
 
   if (spi.stc.databit == 0)
   {  // if 8 bits read and write
@@ -99,7 +95,7 @@ void spi_slave_rx_interrupt_handler()
     // After data received, prepare data to transmit on next interrupt
     for (int k = 0; k < x; k++)
     {
-      sprintf(&rec.data[0], "SPI byte Data # %d, read: 0x%x, write: 0x%x", k, in_b_buf[k], out_b_buf[k]);
+      sprintf(&rec.data[0], "SPI Interrupt: byte Data # %d, read: 0x%x, write: 0x%x", k, in_b_buf[k], out_b_buf[k]);
       enque(&rec);
 
       if (in_b_buf[k] != 0)
@@ -119,7 +115,7 @@ void spi_slave_rx_interrupt_handler()
 
     for (int k = 0; k < x; k++)
     {
-      sprintf(&rec.data[0], "SPI word Data # %d, read: 0x%x, write: 0x%x", k, in_w_buf[k], out_w_buf[k]);
+      sprintf(&rec.data[0], "SPI Interrupt: word Data # %d, read: 0x%x, write: 0x%x", k, in_w_buf[k], out_w_buf[k]);
       enque(&rec);
 
       if (in_w_buf[k] != 0)
@@ -129,6 +125,7 @@ void spi_slave_rx_interrupt_handler()
     }
   }
 }
+
 
 /**
  * @brief Set the up spi slave object
