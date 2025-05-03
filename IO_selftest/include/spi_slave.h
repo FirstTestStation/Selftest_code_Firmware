@@ -8,9 +8,13 @@
  *
  * @copyright Copyright (c) 2024, D.Lockhead. All rights reserved.
  *
+ * @note This file requires <stdint.h> for fixed-width integer types.
+
+ *
  * This software is licensed under the BSD 3-Clause License.
  * See the LICENSE file for more details.
  */
+#include <stdint.h>
 
 #ifndef _SPI_SLAVE_H_
 #define _SPI_SLAVE_H_

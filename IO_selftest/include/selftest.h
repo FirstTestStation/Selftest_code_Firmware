@@ -13,6 +13,7 @@
  */
 
 #include <stdbool.h>
+#include <stdint.h>
 
 #ifndef _SELFTEST_H_
 #    define _SELFTEST_H_
