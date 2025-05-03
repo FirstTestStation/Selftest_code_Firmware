@@ -30,10 +30,18 @@ var NAVTREE =
       [ "Project setup", "md_README.html#autotoc_md2", null ],
       [ "Building", "md_README.html#autotoc_md3", null ],
       [ "Development", "md_README.html#autotoc_md4", null ],
-      [ "Installation", "md_README.html#autotoc_md5", [
-        [ "Setup", "md_README.html#autotoc_md6", null ]
+      [ "Firmware loading Instructions", "md_README.html#autotoc_md5", [
+        [ "1. Download the Latest Firmware UF2 File:", "md_README.html#autotoc_md6", null ],
+        [ "2. Prepare your Raspberry Pi Pico:", "md_README.html#autotoc_md7", null ],
+        [ "3. Enter Bootloader Mode:", "md_README.html#autotoc_md8", null ],
+        [ "4. Copy the UF2 File:", "md_README.html#autotoc_md9", null ],
+        [ "5. Eject the Device:", "md_README.html#autotoc_md10", null ],
+        [ "6. Reboot:", "md_README.html#autotoc_md11", null ]
       ] ],
-      [ "I2C Command supported", "md_README.html#autotoc_md7", null ]
+      [ "Installation", "md_README.html#autotoc_md12", [
+        [ "Setup", "md_README.html#autotoc_md13", null ]
+      ] ],
+      [ "I2C Command supported", "md_README.html#autotoc_md14", null ]
     ] ],
     [ "Classes", "annotated.html", [
       [ "Class List", "annotated.html", "annotated_dup" ],

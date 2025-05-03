@@ -93,26 +93,27 @@ $(document).ready(function(){initNavTree('serial_8c.html',''); initResizable(); 
 
 <p>function who control the UART serial communication port  
 <a href="#details">More...</a></p>
-<div class="textblock"><code>#include &lt;stdio.h&gt;</code><br />
-<code>#include &lt;string.h&gt;</code><br />
-<code>#include &quot;pico/stdlib.h&quot;</code><br />
-<code>#include &quot;hardware/uart.h&quot;</code><br />
+<div class="textblock"><code>#include &quot;<a class="el" href="serial_8h_source.html">include/serial.h</a>&quot;</code><br />
 <code>#include &quot;hardware/irq.h&quot;</code><br />
-<code>#include &quot;<a class="el" href="serial_8h_source.html">include/serial.h</a>&quot;</code><br />
+<code>#include &quot;hardware/uart.h&quot;</code><br />
 <code>#include &quot;<a class="el" href="selftest_8h_source.html">include/selftest.h</a>&quot;</code><br />
+<code>#include &quot;pico/stdlib.h&quot;</code><br />
+<code>#include &lt;stdio.h&gt;</code><br />
+<code>#include &lt;string.h&gt;</code><br />
 </div><div class="textblock"><div class="dynheader">
 Include dependency graph for serial.c:</div>
 <div class="dyncontent">
 <div class="center"><img src="serial_8c__incl.png" border="0" usemap="#aIO__selftest_2serial_8c" alt=""/></div>
 <map name="aIO__selftest_2serial_8c" id="aIO__selftest_2serial_8c">
-<area shape="rect" title="function who control the UART serial communication port" alt="" coords="309,5,451,32"/>
-<area shape="rect" title=" " alt="" coords="5,80,72,107"/>
-<area shape="rect" title=" " alt="" coords="97,80,167,107"/>
-<area shape="rect" title=" " alt="" coords="192,80,293,107"/>
-<area shape="rect" title=" " alt="" coords="317,80,443,107"/>
-<area shape="rect" title=" " alt="" coords="467,80,583,107"/>
-<area shape="rect" href="serial_8h.html" title="Header function to UART serial communication." alt="" coords="607,80,729,107"/>
-<area shape="rect" href="selftest_8h.html" title="Header function to main selftest loop." alt="" coords="753,80,887,107"/>
+<area shape="rect" title="function who control the UART serial communication port" alt="" coords="436,5,579,32"/>
+<area shape="rect" href="serial_8h.html" title="Header function to UART serial communication." alt="" coords="5,80,127,107"/>
+<area shape="rect" title=" " alt="" coords="151,80,267,107"/>
+<area shape="rect" title=" " alt="" coords="291,80,417,107"/>
+<area shape="rect" href="selftest_8h.html" title="Header function to main selftest loop." alt="" coords="441,80,574,107"/>
+<area shape="rect" title=" " alt="" coords="598,80,699,107"/>
+<area shape="rect" title=" " alt="" coords="723,80,790,107"/>
+<area shape="rect" title=" " alt="" coords="815,80,885,107"/>
+<area shape="rect" title=" " alt="" coords="466,155,549,181"/>
 </map>
 </div>
 </div><table class="memberdecls">
@@ -272,7 +273,7 @@ union <a class="el" href="unionuartc.html">uartc</a>&#160;</td><td class="memIte
 <p>Set the uart protocol structure with value received externally. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">cfg_uart</td><td>One byte who define thr uart prtocol to use </td></tr>
+    <tr><td class="paramname">cfg_uart</td><td>One byte who define thr uart protocol to use </td></tr>
     <tr><td class="paramname">resultstr</td><td>return a string with the protocol used on uart </td></tr>
   </table>
   </dd>

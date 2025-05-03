@@ -5,13 +5,13 @@
 function who control the UART serial communication port  
 
 
+{\ttfamily \#include \char`\"{}include/serial.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}hardware/irq.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}hardware/uart.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}include/selftest.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}pico/stdlib.\+h\char`\"{}}\newline
 {\ttfamily \#include $<$stdio.\+h$>$}\newline
 {\ttfamily \#include $<$string.\+h$>$}\newline
-{\ttfamily \#include \char`\"{}pico/stdlib.\+h\char`\"{}}\newline
-{\ttfamily \#include \char`\"{}hardware/uart.\+h\char`\"{}}\newline
-{\ttfamily \#include \char`\"{}hardware/irq.\+h\char`\"{}}\newline
-{\ttfamily \#include \char`\"{}include/serial.\+h\char`\"{}}\newline
-{\ttfamily \#include \char`\"{}include/selftest.\+h\char`\"{}}\newline
 Include dependency graph for serial.\+c\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
@@ -125,7 +125,7 @@ Set the uart protocol structure with value received externally.
 
 
 \begin{DoxyParams}{Parameters}
-{\em cfg\+\_\+uart} & One byte who define thr uart prtocol to use \\
+{\em cfg\+\_\+uart} & One byte who define thr uart protocol to use \\
 \hline
 {\em resultstr} & return a string with the protocol used on uart \\
 \hline

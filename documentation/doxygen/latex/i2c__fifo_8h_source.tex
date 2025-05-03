@@ -14,25 +14,28 @@
 \DoxyCodeLine{10 \textcolor{preprocessor}{\#include <hardware/i2c.h>}}
 \DoxyCodeLine{11 }
 \DoxyCodeLine{12 \textcolor{preprocessor}{\#ifdef \_\_cplusplus}}
-\DoxyCodeLine{13 \textcolor{keyword}{extern} \textcolor{stringliteral}{"{}C"{}} \{}
-\DoxyCodeLine{14 \textcolor{preprocessor}{\#endif}}
-\DoxyCodeLine{15 }
-\DoxyCodeLine{29 \textcolor{keyword}{static} \textcolor{keyword}{inline} uint8\_t i2c\_read\_byte(i2c\_inst\_t *i2c) \{}
-\DoxyCodeLine{30     i2c\_hw\_t *hw = i2c\_get\_hw(i2c);}
-\DoxyCodeLine{31     assert(hw-\/>status \& I2C\_IC\_STATUS\_RFNE\_BITS); \textcolor{comment}{// Rx FIFO must not be empty}}
-\DoxyCodeLine{32     \textcolor{keywordflow}{return} (uint8\_t)hw-\/>data\_cmd;}
-\DoxyCodeLine{33 \}}
-\DoxyCodeLine{34 }
-\DoxyCodeLine{43 \textcolor{keyword}{static} \textcolor{keyword}{inline} \textcolor{keywordtype}{void} i2c\_write\_byte(i2c\_inst\_t *i2c, uint8\_t value) \{}
-\DoxyCodeLine{44     i2c\_hw\_t *hw = i2c\_get\_hw(i2c);}
-\DoxyCodeLine{45     assert(hw-\/>status \& I2C\_IC\_STATUS\_TFNF\_BITS); \textcolor{comment}{// Tx FIFO must not be full}}
-\DoxyCodeLine{46     hw-\/>data\_cmd = value;}
-\DoxyCodeLine{47 \}}
-\DoxyCodeLine{48 }
-\DoxyCodeLine{49 \textcolor{preprocessor}{\#ifdef \_\_cplusplus}}
-\DoxyCodeLine{50 \}}
-\DoxyCodeLine{51 \textcolor{preprocessor}{\#endif}}
-\DoxyCodeLine{52 }
-\DoxyCodeLine{53 \textcolor{preprocessor}{\#endif }\textcolor{comment}{// \_I2C\_FIFO\_H\_}}
+\DoxyCodeLine{13 \textcolor{keyword}{extern} \textcolor{stringliteral}{"{}C"{}}}
+\DoxyCodeLine{14 \{}
+\DoxyCodeLine{15 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{16 }
+\DoxyCodeLine{30     \textcolor{keyword}{static} \textcolor{keyword}{inline} uint8\_t i2c\_read\_byte(i2c\_inst\_t* i2c)}
+\DoxyCodeLine{31     \{}
+\DoxyCodeLine{32         i2c\_hw\_t* hw = i2c\_get\_hw(i2c);}
+\DoxyCodeLine{33         assert(hw-\/>status \& I2C\_IC\_STATUS\_RFNE\_BITS); \textcolor{comment}{// Rx FIFO must not be empty}}
+\DoxyCodeLine{34         \textcolor{keywordflow}{return} (uint8\_t) hw-\/>data\_cmd;}
+\DoxyCodeLine{35     \}}
+\DoxyCodeLine{36 }
+\DoxyCodeLine{45     \textcolor{keyword}{static} \textcolor{keyword}{inline} \textcolor{keywordtype}{void} i2c\_write\_byte(i2c\_inst\_t* i2c, uint8\_t value)}
+\DoxyCodeLine{46     \{}
+\DoxyCodeLine{47         i2c\_hw\_t* hw = i2c\_get\_hw(i2c);}
+\DoxyCodeLine{48         assert(hw-\/>status \& I2C\_IC\_STATUS\_TFNF\_BITS); \textcolor{comment}{// Tx FIFO must not be full}}
+\DoxyCodeLine{49         hw-\/>data\_cmd = value;}
+\DoxyCodeLine{50     \}}
+\DoxyCodeLine{51 }
+\DoxyCodeLine{52 \textcolor{preprocessor}{\#ifdef \_\_cplusplus}}
+\DoxyCodeLine{53 \}}
+\DoxyCodeLine{54 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{55 }
+\DoxyCodeLine{56 \textcolor{preprocessor}{\#endif }\textcolor{comment}{// \_I2C\_FIFO\_H\_}}
 
 \end{DoxyCode}

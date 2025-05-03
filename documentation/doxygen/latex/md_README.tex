@@ -1,8 +1,8 @@
-This software code is written to be loaded on selftest board 500-\/1010-\/xxx. The communication with the Pico controller use the I2C protocol configured as slave.
+This software code is written to be loaded on Selftest board 500-\/1010-\/xxx. The communication with the Pico controller use the I2C protocol configured as slave.
 
-Command has received from the master controller ans the Pico selftest firmware execute the instruction and return answer to the sender
+Command has received from the master controller ans the Pico Selftest firmware execute the instruction and return answer to the sender
 
-The hardware support for the firmware is on github location\+: \href{https://github.com/dlock8/Selftest_Board}{\texttt{ https\+://github.\+com/dlock8/\+Selftest\+\_\+\+Board}}\hypertarget{md_README_autotoc_md1}{}\doxysection{License}\label{md_README_autotoc_md1}
+The hardware support for the firmware is on github location\+: \href{https://github.com/FirstTestStation/Selftest_Board}{\texttt{ https\+://github.\+com/\+First\+Test\+Station/\+Selftest\+\_\+\+Board}}\hypertarget{md_README_autotoc_md1}{}\doxysection{License}\label{md_README_autotoc_md1}
 This project is licensed under the BSD 3-\/Clause License. See the \href{./LICENSE}{\texttt{ LICENSE}} file for more details.\hypertarget{md_README_autotoc_md2}{}\doxysection{Project setup}\label{md_README_autotoc_md2}
 This project was initially developed in 2020 on a Raspberry Pi 4, following the installation instructions from Getting Started with Pico\+\_\+\+C.\+pdf Version 1.\+4.
 
@@ -28,15 +28,42 @@ Build of this cmake project is performed with Visual Studio using Pico Code exte
 \item \href{IO_selftest/selftest.c}{\texttt{ {\ttfamily selftest.\+c}}} is the main source file for the firmware.
 \item \href{CMakeLists.txt}{\texttt{ {\ttfamily CMake\+Lists.\+txt}}} contains build instructions for CMake.
 \item \href{pico_sdk_import.cmake}{\texttt{ {\ttfamily pico\+\_\+sdk\+\_\+import.\+cmake}}} was (as usual) copied verbatim from the Pico SDK and allows CMake to interact with the SDK’s functionality.
-\item \href{raspberrypi-swd.cfg}{\texttt{ {\ttfamily raspberrypi-\/swd.\+cfg}}} need to be copied on opencd interface folder (../.pico-\/sdk/openocd/0.\+12.\+0+dev/scripts/interface/) if GPIO pins is used to debug project.
-\end{DoxyItemize}\hypertarget{md_README_autotoc_md5}{}\doxysection{Installation}\label{md_README_autotoc_md5}
+\end{DoxyItemize}\hypertarget{md_README_autotoc_md5}{}\doxysection{Firmware loading Instructions}\label{md_README_autotoc_md5}
+\hypertarget{md_README_autotoc_md6}{}\doxysubsection{1. Download the Latest Firmware UF2 File\+:}\label{md_README_autotoc_md6}
+You can download the latest firmware UF2 file from the following link\+:
+
+\href{https://github.com/FirstTestStation/Selftest_code_Firmware/blob/main/build/IO_selftest/SELFTEST_CODE.uf2}{\texttt{ Download UF2 File}}
+
+On the Git\+Hub page, select {\bfseries{Download Raw file}} to get the UF2 file.\hypertarget{md_README_autotoc_md7}{}\doxysubsection{2. Prepare your Raspberry Pi Pico\+:}\label{md_README_autotoc_md7}
 
 \begin{DoxyItemize}
-\item The Files \href{build/IO_selftest/SELFTEST_CODE.uf2}{\texttt{ \textquotesingle{}SELFTEST\+\_\+\+CODE.\+uf2\textquotesingle{}}} contains the firmware to be loaded on the Pico RP2040 board using USB cable and boot button.
+\item Make sure your Raspberry Pi Pico is not connected to your computer.
+\end{DoxyItemize}\hypertarget{md_README_autotoc_md8}{}\doxysubsection{3. Enter Bootloader Mode\+:}\label{md_README_autotoc_md8}
+
+\begin{DoxyItemize}
+\item Hold down the {\bfseries{BOOTSEL}} button on your Raspberry Pi Pico.
+\item While holding the {\bfseries{BOOTSEL}} button, connect the Pico to your computer via USB.
+\item Release the {\bfseries{BOOTSEL}} button after the Pico appears as a mass storage device on your computer.
+\end{DoxyItemize}\hypertarget{md_README_autotoc_md9}{}\doxysubsection{4. Copy the UF2 File\+:}\label{md_README_autotoc_md9}
+
+\begin{DoxyItemize}
+\item Once in bootloader mode, the Raspberry Pi Pico will show up as a removable storage drive named {\ttfamily RPI-\/\+RP2}.
+\item Copy the downloaded UF2 file (e.\+g., {\ttfamily SELFTEST\+\_\+\+CODE.\+uf2}) to the {\ttfamily RPI-\/\+RP2} drive.
+\end{DoxyItemize}\hypertarget{md_README_autotoc_md10}{}\doxysubsection{5. Eject the Device\+:}\label{md_README_autotoc_md10}
+
+\begin{DoxyItemize}
+\item After the file is copied, safely eject the {\ttfamily RPI-\/\+RP2} drive from your computer.
+\end{DoxyItemize}\hypertarget{md_README_autotoc_md11}{}\doxysubsection{6. Reboot\+:}\label{md_README_autotoc_md11}
+
+\begin{DoxyItemize}
+\item The Raspberry Pi Pico will automatically reboot and start running the new firmware.
+\end{DoxyItemize}\hypertarget{md_README_autotoc_md12}{}\doxysection{Installation}\label{md_README_autotoc_md12}
+
+\begin{DoxyItemize}
 \item When software loaded, the Pico board should be installed on the location marked ST\+\_\+\+CTRL on Selftest Board.
 \item On board Pico Led will flash slowly (heartbeat) on power ON.
-\end{DoxyItemize}\hypertarget{md_README_autotoc_md6}{}\doxysubsection{Setup}\label{md_README_autotoc_md6}
-Follow the instructions in \href{https://datasheets.raspberrypi.org/pico/getting-started-with-pico.pdf}{\texttt{ Getting started with Raspberry Pi Pico}} to setup your build environment.\hypertarget{md_README_autotoc_md7}{}\doxysection{I2\+C Command supported}\label{md_README_autotoc_md7}
+\end{DoxyItemize}\hypertarget{md_README_autotoc_md13}{}\doxysubsection{Setup}\label{md_README_autotoc_md13}
+Follow the instructions in \href{https://datasheets.raspberrypi.org/pico/getting-started-with-pico.pdf}{\texttt{ Getting started with Raspberry Pi Pico}} to setup your build environment.\hypertarget{md_README_autotoc_md14}{}\doxysection{I2\+C Command supported}\label{md_README_autotoc_md14}
 Pico i2C Selftest Protocol
 
 I2C Command is 2 bytes long\+: Command\+\_\+byte (1 byte) + Data (1 byte)
@@ -83,7 +110,7 @@ I2C Command is 2 bytes long\+: Command\+\_\+byte (1 byte) + Data (1 byte)
 &Bit 0   &Config Completed 0\+: true    \\\cline{1-3}
 &Bit 1   &Command accepted 0\+: true    \\\cline{1-3}
 &Bit 2   &Error 1= true    \\\cline{1-3}
-&Bit 3   &watchdog trigged 1= true    \\\cline{1-3}
+&Bit 3   &watchdog triggered 1= true    \\\cline{1-3}
 101   &Enable UART   &setup UART mode 0\+: TX/\+RX, 1\+: TX/\+RX + CTS/\+RTS    \\\cline{1-3}
 102   &Disable UART   &setup UART to SIO mode\+: 0\+:input gpio, 1\+:output gpio    \\\cline{1-3}
 103   &Set UART protocol   &set UART protocol, see bits definition below    \\\cline{1-3}

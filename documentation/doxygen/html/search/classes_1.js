@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['i2c_5fslave_5ft_0',['i2c_slave_t',['../structi2c__slave__t.html',1,'']]]
+  ['hex2_5ft_0',['hex2_t',['../structhex2__t.html',1,'']]],
+  ['hex4_5ft_1',['hex4_t',['../structhex4__t.html',1,'']]]
 ];

@@ -6,7 +6,7 @@ The communication with the Pico controller use the I2C protocol configured as sl
 Command has received from the master controller ans the Pico Selftest firmware execute
 the instruction and return answer to the sender
 
-The hardware support for the firmware is on github location: https://github.com/dlock8/Selftest_Board
+The hardware support for the firmware is on github location: https://github.com/FirstTestStation/Selftest_Board
 
 
 ## License
@@ -43,15 +43,14 @@ Build of this cmake project is performed with Visual Studio using Pico Code exte
 * [`selftest.c`](IO_selftest/selftest.c) is the main source file for the firmware.
 * [`CMakeLists.txt`](CMakeLists.txt) contains build instructions for CMake.
 * [`pico_sdk_import.cmake`](pico_sdk_import.cmake) was (as usual) copied verbatim from the Pico SDK and allows CMake to interact with the SDK’s functionality.
-* [`raspberrypi-swd.cfg`](raspberrypi-swd.cfg) need to be copied on openocd interface folder 
-(../.pico-sdk/openocd/0.12.0+dev/scripts/interface/) if GPIO pins is used to debug project.
+
 
 ## Firmware loading Instructions
 
 ### 1. Download the Latest Firmware UF2 File:
    You can download the latest firmware UF2 file from the following link:
 
-   [Download UF2 File](https://github.com/dlock8/Selftest_code/blob/main/build/IO_selftest/SELFTEST_CODE.uf2)
+   [Download UF2 File](https://github.com/FirstTestStation/Selftest_code_Firmware/blob/main/build/IO_selftest/SELFTEST_CODE.uf2)
 
    On the GitHub page, select **Download Raw file** to get the UF2 file.
 

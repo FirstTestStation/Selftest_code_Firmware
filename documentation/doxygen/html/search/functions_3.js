@@ -1,6 +1,5 @@
 var searchData=
 [
-  ['i2c_5fslave_5fdeinit_0',['i2c_slave_deinit',['../i2c__slave_8h.html#aebbea8f5a707f23750ba3e0c8b5eb6ee',1,'i2c_slave.c']]],
-  ['i2c_5fslave_5finit_1',['i2c_slave_init',['../i2c__slave_8h.html#a2ecc43ff4a3c673a704d0c7bd7d91db4',1,'i2c_slave.c']]],
-  ['init_5fqueue_2',['init_queue',['../selftest_8c.html#ae733fe874122894bac75e1be37326ceb',1,'selftest.c']]]
+  ['get_5fspi_5fprotocol_0',['get_spi_protocol',['../spi__slave_8h.html#a4f569d69662f370c03db2c0f6a7532cd',1,'get_spi_protocol(char *resultstr):&#160;spi_slave.c'],['../spi__slave_8c.html#a4f569d69662f370c03db2c0f6a7532cd',1,'get_spi_protocol(char *resultstr):&#160;spi_slave.c']]],
+  ['get_5fuart_5fprotocol_1',['get_uart_protocol',['../serial_8h.html#accb63e465a1f86b29e2aac125acbd549',1,'get_uart_protocol(char *resultstr):&#160;serial.c'],['../serial_8c.html#accb63e465a1f86b29e2aac125acbd549',1,'get_uart_protocol(char *resultstr):&#160;serial.c']]]
 ];

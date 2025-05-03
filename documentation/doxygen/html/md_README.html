@@ -86,9 +86,9 @@ $(document).ready(function(){initNavTree('md_README.html',''); initResizable(); 
   <div class="headertitle"><div class="title">Selftest code firmware 700-2010-011 </div></div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><p >This software code is written to be loaded on selftest board 500-1010-xxx. The communication with the Pico controller use the I2C protocol configured as slave.</p>
-<p >Command has received from the master controller ans the Pico selftest firmware execute the instruction and return answer to the sender</p>
-<p >The hardware support for the firmware is on github location: <a href="https://github.com/dlock8/Selftest_Board">https://github.com/dlock8/Selftest_Board</a></p>
+<div class="textblock"><p >This software code is written to be loaded on Selftest board 500-1010-xxx. The communication with the Pico controller use the I2C protocol configured as slave.</p>
+<p >Command has received from the master controller ans the Pico Selftest firmware execute the instruction and return answer to the sender</p>
+<p >The hardware support for the firmware is on github location: <a href="https://github.com/FirstTestStation/Selftest_Board">https://github.com/FirstTestStation/Selftest_Board</a></p>
 <h1><a class="anchor" id="autotoc_md1"></a>
 License</h1>
 <p >This project is licensed under the BSD 3-Clause License. See the <a href="./LICENSE">LICENSE</a> file for more details.</p>
@@ -114,19 +114,52 @@ Development</h1>
 <li><a href="IO_selftest/selftest.c"><code>selftest.c</code></a> is the main source file for the firmware.</li>
 <li><a href="CMakeLists.txt"><code>CMakeLists.txt</code></a> contains build instructions for CMake.</li>
 <li><a href="pico_sdk_import.cmake"><code>pico_sdk_import.cmake</code></a> was (as usual) copied verbatim from the Pico SDK and allows CMake to interact with the SDK’s functionality.</li>
-<li><a href="raspberrypi-swd.cfg"><code>raspberrypi-swd.cfg</code></a> need to be copied on opencd interface folder (../.pico-sdk/openocd/0.12.0+dev/scripts/interface/) if GPIO pins is used to debug project.</li>
 </ul>
 <h1><a class="anchor" id="autotoc_md5"></a>
+Firmware loading Instructions</h1>
+<h2><a class="anchor" id="autotoc_md6"></a>
+1. Download the Latest Firmware UF2 File:</h2>
+<p >You can download the latest firmware UF2 file from the following link:</p>
+<p ><a href="https://github.com/FirstTestStation/Selftest_code_Firmware/blob/main/build/IO_selftest/SELFTEST_CODE.uf2">Download UF2 File</a></p>
+<p >On the GitHub page, select <b>Download Raw file</b> to get the UF2 file.</p>
+<h2><a class="anchor" id="autotoc_md7"></a>
+2. Prepare your Raspberry Pi Pico:</h2>
+<ul>
+<li>Make sure your Raspberry Pi Pico is not connected to your computer.</li>
+</ul>
+<h2><a class="anchor" id="autotoc_md8"></a>
+3. Enter Bootloader Mode:</h2>
+<ul>
+<li>Hold down the <b>BOOTSEL</b> button on your Raspberry Pi Pico.</li>
+<li>While holding the <b>BOOTSEL</b> button, connect the Pico to your computer via USB.</li>
+<li>Release the <b>BOOTSEL</b> button after the Pico appears as a mass storage device on your computer.</li>
+</ul>
+<h2><a class="anchor" id="autotoc_md9"></a>
+4. Copy the UF2 File:</h2>
+<ul>
+<li>Once in bootloader mode, the Raspberry Pi Pico will show up as a removable storage drive named <code>RPI-RP2</code>.</li>
+<li>Copy the downloaded UF2 file (e.g., <code>SELFTEST_CODE.uf2</code>) to the <code>RPI-RP2</code> drive.</li>
+</ul>
+<h2><a class="anchor" id="autotoc_md10"></a>
+5. Eject the Device:</h2>
+<ul>
+<li>After the file is copied, safely eject the <code>RPI-RP2</code> drive from your computer.</li>
+</ul>
+<h2><a class="anchor" id="autotoc_md11"></a>
+6. Reboot:</h2>
+<ul>
+<li>The Raspberry Pi Pico will automatically reboot and start running the new firmware.</li>
+</ul>
+<h1><a class="anchor" id="autotoc_md12"></a>
 Installation</h1>
 <ul>
-<li>The Files <a href="build/IO_selftest/SELFTEST_CODE.uf2">'SELFTEST_CODE.uf2'</a> contains the firmware to be loaded on the Pico RP2040 board using USB cable and boot button.</li>
 <li>When software loaded, the Pico board should be installed on the location marked ST_CTRL on Selftest Board.</li>
 <li>On board Pico Led will flash slowly (heartbeat) on power ON.</li>
 </ul>
-<h2><a class="anchor" id="autotoc_md6"></a>
+<h2><a class="anchor" id="autotoc_md13"></a>
 Setup</h2>
 <p >Follow the instructions in <a href="https://datasheets.raspberrypi.org/pico/getting-started-with-pico.pdf">Getting started with Raspberry Pi Pico</a> to setup your build environment.</p>
-<h1><a class="anchor" id="autotoc_md7"></a>
+<h1><a class="anchor" id="autotoc_md14"></a>
 I2C Command supported</h1>
 <p >Pico i2C Selftest Protocol</p>
 <p >I2C Command is 2 bytes long: Command_byte (1 byte) + Data (1 byte)</p>
@@ -198,7 +231,7 @@ I2C Command supported</h1>
 <tr class="markdownTableRowEven">
 <td class="markdownTableBodyNone"></td><td class="markdownTableBodyNone">Bit 2   </td><td class="markdownTableBodyNone">Error 1= true    </td></tr>
 <tr class="markdownTableRowOdd">
-<td class="markdownTableBodyNone"></td><td class="markdownTableBodyNone">Bit 3   </td><td class="markdownTableBodyNone">watchdog trigged 1= true    </td></tr>
+<td class="markdownTableBodyNone"></td><td class="markdownTableBodyNone">Bit 3   </td><td class="markdownTableBodyNone">watchdog triggered 1= true    </td></tr>
 <tr class="markdownTableRowEven">
 <td class="markdownTableBodyNone">101   </td><td class="markdownTableBodyNone">Enable UART   </td><td class="markdownTableBodyNone">setup UART mode 0: TX/RX, 1: TX/RX + CTS/RTS    </td></tr>
 <tr class="markdownTableRowOdd">

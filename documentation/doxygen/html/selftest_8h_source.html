@@ -87,57 +87,56 @@ $(document).ready(function(){initNavTree('selftest_8h_source.html',''); initResi
 </div><!--header-->
 <div class="contents">
 <a href="selftest_8h.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span> </div>
-<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span><span class="preprocessor">#ifndef _SELFTEST_H_</span></div>
-<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span><span class="preprocessor">#define _SELFTEST_H_</span></div>
-<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span> </div>
-<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span><span class="preprocessor">#ifdef __cplusplus</span></div>
-<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span><span class="keyword">extern</span> <span class="stringliteral">&quot;C&quot;</span></div>
-<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span>{</div>
-<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span><span class="preprocessor">#endif</span></div>
-<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span> </div>
-<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span>  <span class="comment">//#define DEBUG_CODE  // DEbug mode for test code using i2c loopback</span></div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span><span class="preprocessor">#include &lt;stdbool.h&gt;</span></div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span> </div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span><span class="preprocessor">#ifndef _SELFTEST_H_</span></div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span><span class="preprocessor">#    define _SELFTEST_H_</span></div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span> </div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span><span class="preprocessor">#    ifdef __cplusplus</span></div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span><span class="keyword">extern</span> <span class="stringliteral">&quot;C&quot;</span></div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span>{</div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span><span class="preprocessor">#    endif</span></div>
 <div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span> </div>
-<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span>  <span class="comment">// For help debug code on selftest board,  a loopback has been made using gpio reserved</span></div>
-<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span>  <span class="comment">// for JTAG testing. If debug is defined, the slave i2C pin are modified to be connected</span></div>
-<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span>  <span class="comment">// on the loopback</span></div>
-<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span> </div>
-<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span><span class="preprocessor">#ifdef DEBUG_CODE</span></div>
-<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span><span class="preprocessor">#define I2C_SLAVE_SDA_PIN 18  </span></div>
-<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span><span class="preprocessor">#define I2C_SLAVE_SCL_PIN 19  </span></div>
-<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span><span class="preprocessor">#define I2C_MASTER_SDA_PIN 16 </span></div>
-<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span><span class="preprocessor">#define I2C_MASTER_SCL_PIN 17 </span></div>
-<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span><span class="preprocessor">#endif</span></div>
-<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span> </div>
-<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span><span class="preprocessor">#ifndef DEBUG_CODE</span></div>
-<div class="line"><a id="l00043" name="l00043"></a><span class="lineno"><a class="line" href="selftest_8h.html#a9ef9e2dc317ee4678ee9377413c7e144">   43</a></span><span class="preprocessor">#define I2C_SLAVE_SDA_PIN 6 </span></div>
-<div class="line"><a id="l00044" name="l00044"></a><span class="lineno"><a class="line" href="selftest_8h.html#ae0f44eccd9aed39f759f5aa3559b7cfa">   44</a></span><span class="preprocessor">#define I2C_SLAVE_SCL_PIN 7 </span></div>
-<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span><span class="preprocessor">#endif</span></div>
-<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span> </div>
-<div class="line"><a id="l00047" name="l00047"></a><span class="lineno"><a class="line" href="selftest_8h.html#aeca90e1c1c62b70670514ffc18c9dfd4">   47</a></span><span class="preprocessor">#define MESSAGE_SIZE 120  </span></div>
-<div class="line"><a id="l00048" name="l00048"></a><span class="lineno"><a class="line" href="selftest_8h.html#a142810068f1b99cd93d3fc9f0e160e02">   48</a></span><span class="preprocessor">#define QUEUE_SIZE 255     </span></div>
-<div class="line"><a id="l00049" name="l00049"></a><span class="lineno"><a class="line" href="selftest_8h.html#a7806944d3d2580d7208d9f051a19f310">   49</a></span><span class="preprocessor">#define WATCHDOG_TIMEOUT_MS 10000  </span></div>
-<div class="line"><a id="l00050" name="l00050"></a><span class="lineno"><a class="line" href="selftest_8h.html#a43c3022dede7c9db7a58d3c3409dbc8d">   50</a></span><span class="preprocessor">#define GPIOF 10  </span></div>
-<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span> </div>
-<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span> </div>
-<div class="line"><a id="l00056" name="l00056"></a><span class="lineno"><a class="line" href="structMESSAGE.html">   56</a></span><span class="keyword">typedef</span> <span class="keyword">struct</span></div>
-<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>{</div>
-<div class="line"><a id="l00058" name="l00058"></a><span class="lineno"><a class="line" href="structMESSAGE.html#ab3deb79c6e38efcd0887e6ab898b1e5e">   58</a></span>    <span class="keywordtype">char</span> data[<a class="code hl_define" href="selftest_8h.html#aeca90e1c1c62b70670514ffc18c9dfd4">MESSAGE_SIZE</a>];  </div>
-<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>} <a class="code hl_struct" href="structMESSAGE.html">MESSAGE</a>;</div>
-<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span> </div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span>    <span class="comment">//#define DEBUG_CODE  // DEbug mode for test code using i2c loopback</span></div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span> </div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span>    <span class="comment">// For help debug code on selftest board,  a loopback has been made using gpio reserved</span></div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span>    <span class="comment">// for JTAG testing. If debug is defined, the slave i2C pin are modified to be connected</span></div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span>    <span class="comment">// on the loopback</span></div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span> </div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span><span class="preprocessor">#    ifdef DEBUG_CODE</span></div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span><span class="preprocessor">#        define I2C_SLAVE_SDA_PIN 18  </span></div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span><span class="preprocessor">#        define I2C_SLAVE_SCL_PIN 19  </span></div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span><span class="preprocessor">#        define I2C_MASTER_SDA_PIN 16 </span></div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span><span class="preprocessor">#        define I2C_MASTER_SCL_PIN 17 </span></div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span><span class="preprocessor">#    endif</span></div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span> </div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span><span class="preprocessor">#    ifndef DEBUG_CODE</span></div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno"><a class="line" href="selftest_8h.html#a9ef9e2dc317ee4678ee9377413c7e144">   45</a></span><span class="preprocessor">#        define I2C_SLAVE_SDA_PIN 6 </span></div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno"><a class="line" href="selftest_8h.html#ae0f44eccd9aed39f759f5aa3559b7cfa">   46</a></span><span class="preprocessor">#        define I2C_SLAVE_SCL_PIN 7 </span></div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span><span class="preprocessor">#    endif</span></div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span> </div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno"><a class="line" href="selftest_8h.html#aeca90e1c1c62b70670514ffc18c9dfd4">   49</a></span><span class="preprocessor">#    define MESSAGE_SIZE 120          </span></div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno"><a class="line" href="selftest_8h.html#a142810068f1b99cd93d3fc9f0e160e02">   50</a></span><span class="preprocessor">#    define QUEUE_SIZE 255            </span></div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno"><a class="line" href="selftest_8h.html#a7806944d3d2580d7208d9f051a19f310">   51</a></span><span class="preprocessor">#    define WATCHDOG_TIMEOUT_MS 10000 </span></div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno"><a class="line" href="selftest_8h.html#a43c3022dede7c9db7a58d3c3409dbc8d">   52</a></span><span class="preprocessor">#    define GPIOF 10                  </span></div>
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span> </div>
+<div class="line"><a id="l00057" name="l00057"></a><span class="lineno"><a class="line" href="structMESSAGE.html">   57</a></span>    <span class="keyword">typedef</span> <span class="keyword">struct</span></div>
+<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span>    {</div>
+<div class="line"><a id="l00059" name="l00059"></a><span class="lineno"><a class="line" href="structMESSAGE.html#ab3deb79c6e38efcd0887e6ab898b1e5e">   59</a></span>        <span class="keywordtype">char</span> data[<a class="code hl_define" href="selftest_8h.html#aeca90e1c1c62b70670514ffc18c9dfd4">MESSAGE_SIZE</a>]; </div>
+<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>    } <a class="code hl_struct" href="structMESSAGE.html">MESSAGE</a>;</div>
 <div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span> </div>
-<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span> </div>
-<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span>  <span class="keywordtype">bool</span> <a class="code hl_function" href="selftest_8h.html#a859df203fa7c1fb839e68ce8f39ac6f6">enque</a>(<a class="code hl_struct" href="structMESSAGE.html">MESSAGE</a>* message);</div>
-<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span>  <span class="keywordtype">void</span> <a class="code hl_function" href="selftest_8h.html#a30321494f4854c4ecd9a6a05f82450f6">set_pwm_frequency</a>(<span class="keywordtype">bool</span> setpwm, uint8_t sfreq);</div>
-<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span> </div>
-<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span><span class="preprocessor">#ifdef __cplusplus</span></div>
-<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span>}</div>
-<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span><span class="preprocessor">#endif</span></div>
-<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span> </div>
-<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span><span class="preprocessor">#endif  </span><span class="comment">//</span></div>
-<div class="ttc" id="aselftest_8h_html_a30321494f4854c4ecd9a6a05f82450f6"><div class="ttname"><a href="selftest_8h.html#a30321494f4854c4ecd9a6a05f82450f6">set_pwm_frequency</a></div><div class="ttdeci">void set_pwm_frequency(bool setpwm, uint8_t sfreq)</div><div class="ttdoc">Used on in development to loopback I2C to simulate master talking to slave.</div><div class="ttdef"><b>Definition:</b> selftest.c:535</div></div>
-<div class="ttc" id="aselftest_8h_html_a859df203fa7c1fb839e68ce8f39ac6f6"><div class="ttname"><a href="selftest_8h.html#a859df203fa7c1fb839e68ce8f39ac6f6">enque</a></div><div class="ttdeci">bool enque(MESSAGE *message)</div><div class="ttdoc">Enqueue a message into the queue.</div><div class="ttdef"><b>Definition:</b> selftest.c:65</div></div>
-<div class="ttc" id="aselftest_8h_html_aeca90e1c1c62b70670514ffc18c9dfd4"><div class="ttname"><a href="selftest_8h.html#aeca90e1c1c62b70670514ffc18c9dfd4">MESSAGE_SIZE</a></div><div class="ttdeci">#define MESSAGE_SIZE</div><div class="ttdoc">Size of each message.</div><div class="ttdef"><b>Definition:</b> selftest.h:47</div></div>
-<div class="ttc" id="astructMESSAGE_html"><div class="ttname"><a href="structMESSAGE.html">MESSAGE</a></div><div class="ttdoc">Structure representing a message.</div><div class="ttdef"><b>Definition:</b> selftest.h:57</div></div>
+<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span>    <span class="keywordtype">bool</span> <a class="code hl_function" href="selftest_8h.html#a859df203fa7c1fb839e68ce8f39ac6f6">enque</a>(<a class="code hl_struct" href="structMESSAGE.html">MESSAGE</a>* message);</div>
+<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="selftest_8h.html#a30321494f4854c4ecd9a6a05f82450f6">set_pwm_frequency</a>(<span class="keywordtype">bool</span> setpwm, uint8_t sfreq);</div>
+<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span> </div>
+<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span><span class="preprocessor">#    ifdef __cplusplus</span></div>
+<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span>}</div>
+<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span><span class="preprocessor">#    endif</span></div>
+<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span> </div>
+<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span><span class="preprocessor">#endif </span><span class="comment">//</span></div>
+<div class="ttc" id="aselftest_8h_html_a30321494f4854c4ecd9a6a05f82450f6"><div class="ttname"><a href="selftest_8h.html#a30321494f4854c4ecd9a6a05f82450f6">set_pwm_frequency</a></div><div class="ttdeci">void set_pwm_frequency(bool setpwm, uint8_t sfreq)</div><div class="ttdoc">Used on in development to loopback I2C to simulate master talking to slave.</div><div class="ttdef"><b>Definition:</b> selftest.c:533</div></div>
+<div class="ttc" id="aselftest_8h_html_a859df203fa7c1fb839e68ce8f39ac6f6"><div class="ttname"><a href="selftest_8h.html#a859df203fa7c1fb839e68ce8f39ac6f6">enque</a></div><div class="ttdeci">bool enque(MESSAGE *message)</div><div class="ttdoc">Enqueue a message into the queue.</div><div class="ttdef"><b>Definition:</b> selftest.c:63</div></div>
+<div class="ttc" id="aselftest_8h_html_aeca90e1c1c62b70670514ffc18c9dfd4"><div class="ttname"><a href="selftest_8h.html#aeca90e1c1c62b70670514ffc18c9dfd4">MESSAGE_SIZE</a></div><div class="ttdeci">#define MESSAGE_SIZE</div><div class="ttdoc">Size of each message.</div><div class="ttdef"><b>Definition:</b> selftest.h:49</div></div>
+<div class="ttc" id="astructMESSAGE_html"><div class="ttname"><a href="structMESSAGE.html">MESSAGE</a></div><div class="ttdoc">Structure representing a message.</div><div class="ttdef"><b>Definition:</b> selftest.h:58</div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->

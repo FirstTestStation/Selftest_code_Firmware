@@ -6,44 +6,40 @@
 \DoxyCodeLine{15 \textcolor{preprocessor}{\#ifndef \_SPI\_SLAVE\_H\_}}
 \DoxyCodeLine{16 \textcolor{preprocessor}{\#define \_SPI\_SLAVE\_H\_}}
 \DoxyCodeLine{17 }
-\DoxyCodeLine{18 }
-\DoxyCodeLine{19 }
-\DoxyCodeLine{20 \textcolor{preprocessor}{\#ifdef \_\_cplusplus}}
-\DoxyCodeLine{21 \textcolor{keyword}{extern} \textcolor{stringliteral}{"{}C"{}} \{}
-\DoxyCodeLine{22 \textcolor{preprocessor}{\#endif}}
-\DoxyCodeLine{23 }
-\DoxyCodeLine{27 \textcolor{preprocessor}{\#define SPI\_PORT                spi0  }}
-\DoxyCodeLine{28 \textcolor{preprocessor}{\#define PICO\_SLAVE\_SPI\_SCK\_PIN   2    }}
-\DoxyCodeLine{29 \textcolor{preprocessor}{\#define PICO\_SLAVE\_SPI\_TX\_PIN    4    }}
-\DoxyCodeLine{30 \textcolor{preprocessor}{\#define PICO\_SLAVE\_SPI\_RX\_PIN    3    }}
-\DoxyCodeLine{31 \textcolor{preprocessor}{\#define PICO\_SLAVE\_SPI\_CSN\_PIN   5    }}
-\DoxyCodeLine{32 }
-\DoxyCodeLine{36 \textcolor{preprocessor}{\#define DEF\_SPI\_STATUS    0  }}
-\DoxyCodeLine{37 \textcolor{preprocessor}{\#define DEF\_SPI\_DATABIT   0  }}
-\DoxyCodeLine{38 \textcolor{preprocessor}{\#define DEF\_SPI\_MODE      0  }}
-\DoxyCodeLine{39 \textcolor{preprocessor}{\#define DEF\_BAUDRATE      10 }}
-\DoxyCodeLine{40 }
-\DoxyCodeLine{44 \textcolor{preprocessor}{\#define SPI\_RW\_LEN        16 }}
-\DoxyCodeLine{45 }
-\DoxyCodeLine{46 }
-\DoxyCodeLine{47 \textcolor{keywordtype}{void} \mbox{\hyperlink{spi__slave_8h_ad1ad7b69c2600990c2be349d0bc71f3d}{set\_default\_spi}}(\textcolor{keywordtype}{void});}
-\DoxyCodeLine{48 \textcolor{keywordtype}{void} \mbox{\hyperlink{spi__slave_8h_af78da88902b653f39eace21fdf45c672}{set\_spi\_com\_format}}(\textcolor{keywordtype}{void});}
-\DoxyCodeLine{49 \textcolor{keywordtype}{void} \mbox{\hyperlink{spi__slave_8h_a3aa0b2ac8a5dda0fe85bf37a2c65b2d4}{enable\_spi}}(\textcolor{keywordtype}{void});}
-\DoxyCodeLine{50 \textcolor{keywordtype}{void} \mbox{\hyperlink{spi__slave_8h_a8a6d276f364d0cb9e63b4bf1e79b4c4b}{disable\_spi}}(uint8\_t mode);}
-\DoxyCodeLine{51 \textcolor{keywordtype}{void} \mbox{\hyperlink{spi__slave_8h_aeee0d13f678de4e9e9d3542cbfe4f1fd}{set\_spi\_protocol}}(uint8\_t cfg\_spi,\textcolor{keywordtype}{char} *resultstr);}
-\DoxyCodeLine{52 uint8\_t \mbox{\hyperlink{spi__slave_8h_a4f569d69662f370c03db2c0f6a7532cd}{get\_spi\_protocol}}(\textcolor{keywordtype}{char} *resultstr);}
-\DoxyCodeLine{53 \textcolor{keywordtype}{void} \mbox{\hyperlink{spi__slave_8h_a443f40d1f98ee9debaf9d0297fe7d6cc}{spi\_string\_protocol}}(\textcolor{keywordtype}{char} *protocol\_string);}
-\DoxyCodeLine{54 }
-\DoxyCodeLine{55 \textcolor{preprocessor}{\#ifdef DEBUG\_CODE}}
-\DoxyCodeLine{56 \textcolor{keywordtype}{void} test\_spi\_command(\textcolor{keywordtype}{void});}
-\DoxyCodeLine{57 \textcolor{preprocessor}{\#endif}}
-\DoxyCodeLine{58 }
-\DoxyCodeLine{59 }
-\DoxyCodeLine{60 \textcolor{preprocessor}{\#ifdef \_\_cplusplus}}
-\DoxyCodeLine{61 \}}
-\DoxyCodeLine{62 \textcolor{preprocessor}{\#endif}}
-\DoxyCodeLine{63 }
-\DoxyCodeLine{64 \textcolor{preprocessor}{\#endif }\textcolor{comment}{//}}
-\DoxyCodeLine{65 }
+\DoxyCodeLine{18 \textcolor{preprocessor}{\#ifdef \_\_cplusplus}}
+\DoxyCodeLine{19 \textcolor{keyword}{extern} \textcolor{stringliteral}{"{}C"{}}}
+\DoxyCodeLine{20 \{}
+\DoxyCodeLine{21 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{22 }
+\DoxyCodeLine{26 \textcolor{preprocessor}{\#define SPI\_PORT spi0            }}
+\DoxyCodeLine{27 \textcolor{preprocessor}{\#define PICO\_SLAVE\_SPI\_SCK\_PIN 2 }}
+\DoxyCodeLine{28 \textcolor{preprocessor}{\#define PICO\_SLAVE\_SPI\_TX\_PIN 4  }}
+\DoxyCodeLine{29 \textcolor{preprocessor}{\#define PICO\_SLAVE\_SPI\_RX\_PIN 3  }}
+\DoxyCodeLine{30 \textcolor{preprocessor}{\#define PICO\_SLAVE\_SPI\_CSN\_PIN 5 }}
+\DoxyCodeLine{31 }
+\DoxyCodeLine{35 \textcolor{preprocessor}{\#define DEF\_SPI\_STATUS 0  }}
+\DoxyCodeLine{36 \textcolor{preprocessor}{\#define DEF\_SPI\_DATABIT 0 }}
+\DoxyCodeLine{37 \textcolor{preprocessor}{\#define DEF\_SPI\_MODE 0    }}
+\DoxyCodeLine{38 \textcolor{preprocessor}{\#define DEF\_BAUDRATE 10   }}
+\DoxyCodeLine{39 }
+\DoxyCodeLine{43 \textcolor{preprocessor}{\#define SPI\_RW\_LEN 16 }}
+\DoxyCodeLine{44 }
+\DoxyCodeLine{45     \textcolor{keywordtype}{void} \mbox{\hyperlink{spi__slave_8h_ad1ad7b69c2600990c2be349d0bc71f3d}{set\_default\_spi}}(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{46     \textcolor{keywordtype}{void} \mbox{\hyperlink{spi__slave_8h_af78da88902b653f39eace21fdf45c672}{set\_spi\_com\_format}}(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{47     \textcolor{keywordtype}{void} \mbox{\hyperlink{spi__slave_8h_a3aa0b2ac8a5dda0fe85bf37a2c65b2d4}{enable\_spi}}(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{48     \textcolor{keywordtype}{void} \mbox{\hyperlink{spi__slave_8h_a8a6d276f364d0cb9e63b4bf1e79b4c4b}{disable\_spi}}(uint8\_t mode);}
+\DoxyCodeLine{49     \textcolor{keywordtype}{void} \mbox{\hyperlink{spi__slave_8h_aeee0d13f678de4e9e9d3542cbfe4f1fd}{set\_spi\_protocol}}(uint8\_t cfg\_spi, \textcolor{keywordtype}{char}* resultstr);}
+\DoxyCodeLine{50     uint8\_t \mbox{\hyperlink{spi__slave_8h_a4f569d69662f370c03db2c0f6a7532cd}{get\_spi\_protocol}}(\textcolor{keywordtype}{char}* resultstr);}
+\DoxyCodeLine{51     \textcolor{keywordtype}{void} \mbox{\hyperlink{spi__slave_8h_a443f40d1f98ee9debaf9d0297fe7d6cc}{spi\_string\_protocol}}(\textcolor{keywordtype}{char}* protocol\_string);}
+\DoxyCodeLine{52 }
+\DoxyCodeLine{53 \textcolor{preprocessor}{\#ifdef DEBUG\_CODE}}
+\DoxyCodeLine{54     \textcolor{keywordtype}{void} test\_spi\_command(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{55 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{56 }
+\DoxyCodeLine{57 \textcolor{preprocessor}{\#ifdef \_\_cplusplus}}
+\DoxyCodeLine{58 \}}
+\DoxyCodeLine{59 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{60 }
+\DoxyCodeLine{61 \textcolor{preprocessor}{\#endif }\textcolor{comment}{//}}
 
 \end{DoxyCode}
